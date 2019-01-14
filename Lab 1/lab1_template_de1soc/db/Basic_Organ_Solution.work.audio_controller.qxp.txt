@@ -1,0 +1,50 @@
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
++------------------------------------------------------------------------+
+; Quartus II QXP Design File                                             ;
++------------------+-----------------------------------------------------+
+; Field            ; Value                                               ;
++------------------+-----------------------------------------------------+
+; Entity           ; audio_controller                                    ;
+; Case Sensitive   ;                                                     ;
+; QXP Source       ; audio_controller.qxp                                ;
+; Software Version ; Version 14.1.0 Build 186 12/03/2014 SJ Full Version ;
+; Date             ; Thu May 05 20:26:10 2016                            ;
+; Contents         ; Netlist Only                                        ;
+; Family           ; 5CSEMA5F31C6                                        ;
+; Device           ; CYCLONEV_SE90M_V_F896C6                             ;
++------------------+-----------------------------------------------------+
+
++-----------------------------------------------+
+; Boundary Ports                                ;
++-------------------+--------+------------------+
+; Port Name         ; Type   ; Default Value    ;
++-------------------+--------+------------------+
+; iCLK_50           ; input  ; 0                ;
+; iCLK_28           ; input  ; 0                ;
+; I2C_SDAT          ; bidir  ; 0                ;
+; oI2C_SCLK         ; output ; 0                ;
+; AUD_ADCLRCK       ; output ; 0                ;
+; iAUD_ADCDAT       ; input  ; 0                ;
+; AUD_DACLRCK       ; output ; 0                ;
+; oAUD_DACDAT       ; output ; 0                ;
+; AUD_BCLK          ; bidir  ; 0                ;
+; oAUD_XCK          ; output ; 0                ;
+; audio_outL [15:0] ; input  ; 0000000000000000 ;
+; audio_outR [15:0] ; input  ; 0000000000000000 ;
+; audio_right_clock ; output ; 0                ;
+; audio_left_clock  ; output ; 0                ;
++-------------------+--------+------------------+

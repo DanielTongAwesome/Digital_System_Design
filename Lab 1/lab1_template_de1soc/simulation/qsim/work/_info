@@ -1,0 +1,94 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/simulation/qsim
+vClock_Divider
+Z1 !s110 1547499171
+!i10b 1
+!s100 NUHMBQKj@ZFgDUfHofSdi2
+IFC4OUW]N0??b=UIGRPcl81
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1547499161
+8Basic_Organ_Solution.vo
+FBasic_Organ_Solution.vo
+L0 32
+Z3 OV;L;10.3c;59
+r1
+!s85 0
+31
+!s108 1547499168.162000
+!s107 Basic_Organ_Solution.vo|
+!s90 -work|work|Basic_Organ_Solution.vo|
+!i113 1
+Z4 o-work work
+n@clock_@divider
+vClock_Divider_vlg_check_tst
+R1
+!i10b 1
+!s100 QK4[?9d0K^`z7:m>3XdL>2
+IDE5k[gN?O]jG>k9>[`MWo1
+R2
+R0
+Z5 w1547499149
+Z6 8Clock_Divider_Simulation.vwf.vt
+Z7 FClock_Divider_Simulation.vwf.vt
+L0 62
+R3
+r1
+!s85 0
+31
+Z8 !s108 1547499171.710000
+Z9 !s107 Clock_Divider_Simulation.vwf.vt|
+Z10 !s90 -work|work|Clock_Divider_Simulation.vwf.vt|
+!i113 1
+R4
+n@clock_@divider_vlg_check_tst
+vClock_Divider_vlg_sample_tst
+R1
+!i10b 1
+!s100 HU1CH_Q6Q6]4AYH0moaJm0
+IKg<nSz9TD5m@2UPz6o18=0
+R2
+R0
+R5
+R6
+R7
+L0 30
+R3
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R4
+n@clock_@divider_vlg_sample_tst
+vClock_Divider_vlg_vec_tst
+R1
+!i10b 1
+!s100 11b@A_42J<IC24LT`jz6T3
+I4@L[4A5V8oLUF6OXMZ8YI1
+R2
+R0
+R5
+R6
+R7
+L0 157
+R3
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R4
+n@clock_@divider_vlg_vec_tst

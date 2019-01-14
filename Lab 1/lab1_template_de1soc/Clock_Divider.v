@@ -1,4 +1,3 @@
-
 /* 
   The clock divider module 
   Input: clock_in --- input clock, the system clock
@@ -9,7 +8,6 @@
 module Clock_Divider(clock_in, clock_out, reset, count_end);
     input clock_in;
     input reset;
-    input count;
     input [31:0] count_end;
     
     // this register is used to counting the period
@@ -23,11 +21,11 @@ module Clock_Divider(clock_in, clock_out, reset, count_end);
     // since count & reg both been assigned value in always block so both have to add reg
     always @( posedge clock_in ) begin
         if (reset) begin
-            clock_in = 0;
+            count = 0;
             clock_out = 0;
             end
         else begin
-            if (cout < count_end) begin
+            if (count < count_end) begin
                 count = count + 1;
                 end
             else begin
@@ -39,4 +37,3 @@ module Clock_Divider(clock_in, clock_out, reset, count_end);
     end
 
 endmodule 
-
