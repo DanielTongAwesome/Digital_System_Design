@@ -192,24 +192,38 @@ parameter character_space=8'h20;           //' '
 parameter character_exclaim=8'h21;          //'!'
 
 
-wire Clock_1KHz, Clock_1Hz;
-wire Sample_Clk_Signal;
 
-//=======================================================================================================================
+//=====================================================================================
 //
 // Insert your code for Lab1 here!
 //
-//
-            
+//=====================================================================================
 
+wire Clock_1KHz, Clock_1Hz;
+wire Sample_Clk_Signal;
+wire Clock_Divider_Output;
+wire Reset
+reg [31:0] count_end
 
+// Assign each frequency to corresponding switch setting
+always @(*) begin
+    case(SW[3:1])
+        3'b000 count_end = 32'b47800; // 523Hz
+        3'b001 count_end = 32'b42588; // 587Hz
+        3'b010 count_end = 32'b37935; // 659Hz
+        3'b100 count_end = 32'b35815; // 698Hz
+        3'b011 count_end = 32'b31927; // 783Hz
+        3'b101 count_end = 32'b28409; // 880Hz
+        3'b110 count_end = 32'b25329; // 987Hz
+        3'b111 count_end = 32'b23900; // 1046Hz
+        default: countTo = 32'hAAAA; 
+	endcase 
+end           
 
+Clock_Divider Clock_Divider(CLOCK_50, Clock_Divider_Output, Reset, count_end);
 
-
-
-            
-
-assign Sample_Clk_Signal = Clock_1KHz;
+// Use switch 0 to choose turn on and off            
+assign Sample_Clk_Signal = SW[0] ? Clock_Divider_Output:0;
 
 //Audio Generation Signal
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
