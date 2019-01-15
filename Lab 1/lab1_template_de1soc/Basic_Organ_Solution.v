@@ -202,21 +202,21 @@ parameter character_exclaim=8'h21;          //'!'
 wire Clock_1KHz, Clock_1Hz;
 wire Sample_Clk_Signal;
 wire Clock_Divider_Output;
-wire Reset
-reg [31:0] count_end
+wire Reset;
+reg [31:0] count_end;
 
 // Assign each frequency to corresponding switch setting
 always @(*) begin
     case(SW[3:1])
-        3'b000 count_end = 32'b47800; // 523Hz
-        3'b001 count_end = 32'b42588; // 587Hz
-        3'b010 count_end = 32'b37935; // 659Hz
-        3'b100 count_end = 32'b35815; // 698Hz
-        3'b011 count_end = 32'b31927; // 783Hz
-        3'b101 count_end = 32'b28409; // 880Hz
-        3'b110 count_end = 32'b25329; // 987Hz
-        3'b111 count_end = 32'b23900; // 1046Hz
-        default: countTo = 32'hAAAA; 
+        3'b000: count_end = 32'd47800; // 523Hz
+        3'b001: count_end = 32'd42588; // 587Hz
+        3'b010: count_end = 32'd37935; // 659Hz
+        3'b100: count_end = 32'd35815; // 698Hz
+        3'b011: count_end = 32'd31927; // 783Hz
+        3'b101: count_end = 32'd28409; // 880Hz
+        3'b110: count_end = 32'd25329; // 987Hz
+        3'b111: count_end = 32'd23900; // 1046Hz
+        default: count_end = 32'hAAAA; 
 	endcase 
 end           
 
