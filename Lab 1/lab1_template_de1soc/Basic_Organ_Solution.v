@@ -200,7 +200,7 @@ parameter character_exclaim=8'h21;          //'!'
 //=====================================================================================
 
 // 1. The following section controls the audio signal frequency 
-wire Clock_1KHz;
+wire Clock_1KHz, Clock_1Hz;
 wire Sample_Clk_Signal;
 wire Clock_Divider_Output;
 wire Reset = 0;  // default 0 --> no reset
@@ -221,7 +221,7 @@ always @(*) begin
 	endcase 
 end           
 
-Clock_Divider Clock_Divider(CLOCK_50, Clock_Divider_Output, Reset, count_end);
+Clock_Divider Clock_Divider_General_1(CLOCK_50, Clock_Divider_Output, Reset, count_end);
 
 // Use switch 0 to choose turn on and off            
 assign Sample_Clk_Signal = SW[0] ? Clock_Divider_Output:0;
@@ -232,11 +232,11 @@ wire [7:0] audio_data = {(~Sample_Clk_Signal),{7{Sample_Clk_Signal}}}; //generat
 
 
 // 2. The following section controls the LED flashing and switching
-wire Clock_1Hz;
+wire Clock_1_Hz;
 reg [31:0] count_end_1hz = 32'd25000000;
 
-Clock_Divider Clock_Divider(CLOCK_50, Clock_1Hz, Reset, count_end_1hz);
-LED_Control LED_Control(Clock_1Hz, LEDR);
+Clock_Divider Clock_Divider_LED(CLOCK_50, Clock_1_Hz, Reset, count_end_1hz);
+LED_Control LED_Control(Clock_1_Hz, LED[7:0]);
 
 
                 

@@ -22,7 +22,7 @@ module LED_Control(clock_in, LEDR);
         else begin
             if (shift_direction == 1'b0) begin
                 LEDR = LEDR >> 1;
-            else
+            end
             else begin
                 LEDR = LEDR << 1;
             end
