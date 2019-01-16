@@ -11,7 +11,7 @@ module Clock_Divider(clock_in, clock_out, reset, count_end);
     input [31:0] count_end;
     
     // this register is used to counting the period
-    reg [31:0] count;
+    reg [31:0] count = 32'd0;
 
     output reg clock_out;
     
@@ -23,17 +23,16 @@ module Clock_Divider(clock_in, clock_out, reset, count_end);
         if (reset) begin
             count = 0;
             clock_out = 0;
-            end
+        end
         else begin
-            if (count < count_end) begin
+            if (count <= count_end) begin
                 count = count + 1;
-                end
+            end
             else begin
                 // clock_out reverse from 0->1 or 1->0
                 clock_out = ~clock_out;
                 count = 0;
-                end
             end
+        end
     end
-
 endmodule 
