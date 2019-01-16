@@ -25,7 +25,7 @@ module Clock_Divider(clock_in, clock_out, reset, count_end);
             clock_out = 0;
         end
         else begin
-            if (count <= count_end) begin
+            if (count < count_end - 1) begin
                 count = count + 1;
             end
             else begin
