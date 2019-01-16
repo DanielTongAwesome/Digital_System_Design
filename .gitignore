@@ -11,3 +11,21 @@
 ehthumbs.db
 Thumbs.db
 *.icloud
+
+# FPGA Related
+*.mti
+*.mpf
+*.wlf
+*.qdb
+*.qpg
+*.qtl
+*.qpf
+*.sof
+*.bak
+*.qarlog
+*.hdb
+work/
+/db/
+incremental_db/
+simulation/
+output_files/
