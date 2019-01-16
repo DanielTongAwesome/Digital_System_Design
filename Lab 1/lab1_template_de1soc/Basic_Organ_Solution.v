@@ -199,10 +199,11 @@ parameter character_exclaim=8'h21;          //'!'
 //
 //=====================================================================================
 
-wire Clock_1KHz, Clock_1Hz;
+// 1. The following section controls the audio signal frequency 
+wire Clock_1KHz;
 wire Sample_Clk_Signal;
 wire Clock_Divider_Output;
-wire Reset;
+wire Reset = 0;  // default 0 --> no reset
 reg [31:0] count_end;
 
 // Assign each frequency to corresponding switch setting
@@ -229,6 +230,13 @@ assign Sample_Clk_Signal = SW[0] ? Clock_Divider_Output:0;
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
 wire [7:0] audio_data = {(~Sample_Clk_Signal),{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
 
+
+// 2. The following section controls the LED flashing and switching
+wire Clock_1Hz;
+reg [31:0] count_end_1hz = 32'd25000000;
+
+Clock_Divider Clock_Divider(CLOCK_50, Clock_1Hz, Reset, count_end_1hz);
+LED_Control LED_Control(Clock_1Hz, LEDR);
 
 
                 
