@@ -1,7 +1,8 @@
 /*
 The LED Control Module
+Input: clock_in -- input clock cycle, in my case is 1Hz
+Output: LED on and off output
 */
-
 module LED_Control(clock_in, LEDR);
     input clock_in;
     output reg [7:0] LEDR = 8'b0000_0001; // default the 1 
