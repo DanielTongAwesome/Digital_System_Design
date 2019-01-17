@@ -21,17 +21,17 @@ module Clock_Divider(clock_in, clock_out, reset, count_end);
     // since count & reg both been assigned value in always block so both have to add reg
     always @( posedge clock_in ) begin
         if (reset) begin
-            count <= 0;
-            clock_out <= 0;
+            count = 0;
+            clock_out = 0;
         end
         else begin
             if (count < count_end - 1) begin
-                count <= count + 1;
+                count = count + 1;
             end
             else begin
                 // clock_out reverse from 0->1 or 1->0
-                clock_out <= ~clock_out;
-                count <= 0;
+                clock_out = ~clock_out;
+                count = 0;
             end
         end
     end
