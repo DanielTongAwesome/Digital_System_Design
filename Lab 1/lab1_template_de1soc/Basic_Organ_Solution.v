@@ -257,6 +257,7 @@ reg [31:0] display_output_reg;
 wire [31:0] display_output;
 wire [31:0] display_ON_OFF;
 
+// check the switch state
 always @(*) begin
 	case(SW[3:1])
 		3'b000: display_output_reg = {character_D, character_O, character_space, character_space};
@@ -281,6 +282,7 @@ assign display_ON_OFF = SW[0] ? {character_O, character_N, character_space, char
 reg [3:0] SW1, SW2, SW3;
 reg [3:0] Frequency0, Frequency1, Frequency2, Frequency3;
 
+// check the switch state, and give corresponding switch value for SingalTap
 always @(*) begin
 	case(SW[3:1])
 		3'b000: {SW1, SW2, SW3} = 12'h000;
@@ -295,6 +297,7 @@ always @(*) begin
 	endcase
 end								
 
+// check the switch state, and give corresponding frequency value for SingalTap
 always @(*) begin
 	case(SW[3:1])
 		3'b000: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h523;
