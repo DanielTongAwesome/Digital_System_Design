@@ -12,6 +12,7 @@ Step 6: Design the "frequency display"<br />
 
 
 ## Detailed Description
+### Step 1 -- Design the frequency divider
 
 
 
