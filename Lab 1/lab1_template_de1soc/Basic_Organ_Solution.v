@@ -207,21 +207,26 @@ wire Reset = 0;  // default 0 --> no reset
 reg [31:0] count_end;
 
 // Assign each frequency to corresponding switch setting
+// ( 50Mhz / (x * 2)) = count_end for each frequency
 always @(*) begin
     case(SW[3:1])
-        3'b000: count_end = 32'd47800; // 523Hz
-        3'b001: count_end = 32'd42588; // 587Hz
-        3'b010: count_end = 32'd37935; // 659Hz
-        3'b100: count_end = 32'd35815; // 698Hz
-        3'b011: count_end = 32'd31927; // 783Hz
+        3'b000: count_end = 32'd47801; // 523Hz
+        3'b001: count_end = 32'd42589; // 587Hz
+        3'b010: count_end = 32'd37936; // 659Hz
+        3'b100: count_end = 32'd35816; // 698Hz
+        3'b011: count_end = 32'd31928; // 783Hz
         3'b101: count_end = 32'd28409; // 880Hz
         3'b110: count_end = 32'd25329; // 987Hz
         3'b111: count_end = 32'd23900; // 1046Hz
-        default: count_end = 32'hAAAA; 
+        default: count_end = 32'hAAAA;  // wait for a long time
 	endcase 
 end           
 
-Clock_Divider Clock_Divider_General_1(CLOCK_50, Clock_Divider_Output, Reset, count_end);
+// clock divider to generate frequency for each node
+Clock_Divider Clock_Divider_General_1( .clock_in(CLOCK_50), 
+                                       .clock_out(Clock_Divider_Output), 
+                                       .reset(Reset), 
+                                       .count_end(count_end));
 
 // Use switch 0 to choose turn on and off            
 assign Sample_Clk_Signal = SW[0] ? Clock_Divider_Output:0;
@@ -235,8 +240,15 @@ wire [7:0] audio_data = {(~Sample_Clk_Signal),{7{Sample_Clk_Signal}}}; //generat
 wire Clock_1_Hz;
 reg [31:0] count_end_1hz = 32'd25000000;
 
-Clock_Divider Clock_Divider_LED(CLOCK_50, Clock_1_Hz, Reset, count_end_1hz);
-LED_Control LED_Control(Clock_1_Hz, LED[7:0]);
+// clock divider to generate 1Hz freqeuncy output for LED
+Clock_Divider Clock_Divider_LED( .clock_in(CLOCK_50), 
+                                 .clock_out(Clock_1_Hz), 
+                                 .reset(Reset), 
+                                 .count_end(count_end_1hz));
+
+// LED control code
+LED_Control LED_Control( .clock_in(Clock_1_Hz), 
+                         .LEDR(LED[7:0]));
 
 
                 
