@@ -251,7 +251,64 @@ LED_Control LED_Control( .clock_in(Clock_1_Hz),
                          .LEDR(LED[7:0]));
 
 
-                
+
+// 3. Display node on the display channel B
+reg [31:0] display_output_reg;
+wire [31:0] display_output;
+wire [31:0] display_ON_OFF;
+
+always @(*) begin
+	case(SW[3:1])
+		3'b000: display_output_reg = {character_D, character_O, character_space, character_space};
+		3'b001: display_output_reg = {character_R, character_E, character_space, character_space};
+		3'b010: display_output_reg = {character_M, character_I, character_space, character_space};
+		3'b100: display_output_reg = {character_F, character_A, character_space, character_space};
+		3'b011: display_output_reg = {character_S, character_O, character_space, character_space};
+		3'b101: display_output_reg = {character_L, character_A, character_space, character_space};
+		3'b110: display_output_reg = {character_S, character_I, character_space, character_space};
+		3'b111: display_output_reg = {character_D, character_O, character_H, character_space};
+		default: display_output_reg = {character_space, character_space, character_space, character_space};
+	endcase
+end								
+
+// Display the Node								 
+assign display_output = SW[0] ? display_output_reg:{character_space, character_space, character_space, character_space};
+
+// Display ON or OFF
+assign display_ON_OFF = SW[0] ? {character_O, character_N, character_space, character_space}:{character_O, character_F, character_F, character_space};
+
+// 4. Display audio data
+reg [3:0] SW1, SW2, SW3;
+reg [3:0] Frequency0, Frequency1, Frequency2, Frequency3;
+
+always @(*) begin
+	case(SW[3:1])
+		3'b000: {SW1, SW2, SW3} = 12'h000;
+		3'b001: {SW1, SW2, SW3} = 12'h001;
+		3'b010: {SW1, SW2, SW3} = 12'h010;
+		3'b100: {SW1, SW2, SW3} = 12'h100;
+		3'b011: {SW1, SW2, SW3} = 12'h011;
+		3'b101: {SW1, SW2, SW3} = 12'h101;
+		3'b110: {SW1, SW2, SW3} = 12'h110;
+		3'b111: {SW1, SW2, SW3} = 12'h111;
+		default: {SW1, SW2, SW3} = 12'h000;
+	endcase
+end								
+
+always @(*) begin
+	case(SW[3:1])
+		3'b000: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h523;
+		3'b001: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h587;
+		3'b010: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h659;
+		3'b100: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h698;
+		3'b011: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h783;
+		3'b101: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h880;
+		3'b110: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h987;
+		3'b111: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'h1046;
+		default: {Frequency0, Frequency1, Frequency2, Frequency3} = 16'hAAAA;
+	endcase
+end	
+							 
 //=====================================================================================
 //
 // LCD Scope Acquisition Circuitry Wire Definitions                 
@@ -316,24 +373,24 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                     .clk(CLK_50M),  //don't touch
                           
                         //LCD Display values
-                      .InH(8'hAA),
-                      .InG(8'hBB),
-                      .InF(8'h01),
-                       .InE(8'h23),
-                      .InD(8'h45),
-                      .InC(8'h67),
-                      .InB(8'h89),
-                     .InA(8'h00),
+                      .InH({SW1, SW2}),
+                      .InG({SW3, 4'h0}),
+                      .InF(8'h00),
+                      .InE(8'h00),
+                      .InD(8'h00),
+                      .InC(8'h00),
+                      .InB({Frequency0, Frequency1}),
+                      .InA({Frequency2, Frequency3}),
                           
                      //LCD display information signals
-                         .InfoH({character_A,character_U}),
-                          .InfoG({character_S,character_W}),
-                          .InfoF({character_space,character_A}),
-                          .InfoE({character_N,character_space}),
-                          .InfoD({character_E,character_X}),
-                          .InfoC({character_A,character_M}),
-                          .InfoB({character_P,character_L}),
-                          .InfoA({character_E,character_exclaim}),
+                         .InfoH({character_D,character_lowercase_a}),
+                          .InfoG({character_lowercase_n,character_lowercase_i}),
+                          .InfoF({character_lowercase_e,character_lowercase_l}),
+                          .InfoE({character_space,character_A}),
+                          .InfoD({character_lowercase_w,character_lowercase_e}),
+                          .InfoC({character_lowercase_s,character_lowercase_o}),
+                          .InfoB({character_lowercase_m,character_lowercase_e}),
+                          .InfoA({character_exclaim,character_exclaim}),
                           
                   //choose to display the values or the oscilloscope
                           .choose_scope_or_LCD(choose_LCD_or_SCOPE),
@@ -343,8 +400,8 @@ LCD_Scope_Encapsulated_pacoblaze_wrapper LCD_LED_scope(
                           .scope_channelB(scope_channelB), //don't touch
                           
                   //scope information generation
-                          .ScopeInfoA({character_1,character_K,character_H,character_lowercase_z}),
-                          .ScopeInfoB({character_S,character_W,character_1,character_space}),
+                          .ScopeInfoA(display_output),
+                          .ScopeInfoB(display_ON_OFF),
                           
                  //enable_scope is used to freeze the scope just before capturing 
                  //the waveform for display (otherwise the sampling would be unreliable)
