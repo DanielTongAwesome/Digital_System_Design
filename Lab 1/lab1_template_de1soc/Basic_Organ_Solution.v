@@ -202,6 +202,8 @@ parameter character_exclaim=8'h21;          //'!'
 // 1. The following section controls the audio signal frequency 
 wire Clock_1KHz, Clock_1Hz;
 wire Sample_Clk_Signal;
+wire Music_Output;
+wire Audio
 wire Clock_Divider_Output;
 wire Reset = 0;  // default 0 --> no reset
 reg [31:0] count_end;
@@ -222,14 +224,23 @@ always @(*) begin
 	endcase 
 end           
 
-// clock divider to generate frequency for each node
+// Clock divider to generate frequency for each node --- Frequency Output
 Clock_Divider Clock_Divider_General_1( .clock_in(CLOCK_50), 
                                        .clock_out(Clock_Divider_Output), 
                                        .reset(Reset), 
                                        .count_end(count_end));
 
+// Liang Zhu module --- output: Music Output
+liangzhu_player Liang_Zhu_Generator(  .clk(CLOCK_50),
+                                      .i_button_n(SW[4]),
+                                      .o_audio(Music_Output));
+
+
+// Choose between two signals
+Control_Music_Output music_switch( Clock_Divider_Output, Music_Output, Audio, SW[9:7]);
+
 // Use switch 0 to choose turn on and off            
-assign Sample_Clk_Signal = SW[0] ? Clock_Divider_Output:0;
+assign Sample_Clk_Signal = SW[0] ? Audio:0;
 
 //Audio Generation Signal
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
