@@ -1,5 +1,25 @@
 `timescale 1 ns / 1 ps
 
+/*
+Control_Music_Output
+*/
+module Control_Music_Output(Clock_Divider_Output, Music_Output, Output_Aduio, Switch);
+    input [2:0] Switch;
+    input Clock_Divider_Output;
+    input Music_Output;
+    output reg Output_Aduio;
+
+    always @(*) begin
+        case(Switch[2:0])
+            3'b111: Output_Aduio = Music_Output;
+            default: Output_Aduio = Clock_Divider_Output;
+        endcase
+    end
+endmodule
+
+/*
+Liang Zhu Module
+*/
 module liangzhu_player (
 	clk,
 	i_button_n,
