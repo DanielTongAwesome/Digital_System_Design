@@ -240,7 +240,7 @@ liangzhu_player Liang_Zhu_Generator(  .clk(CLOCK_50),
 Control_Music_Output music_switch( .Clock_Divider_Output(Clock_Divider_Output), 
                                    .Music_Output(Music_Output), 
                                    .Output_Aduio(Audio), 
-                                   .SW(SW[9:7]));
+                                   .Switch(SW[9:7]));
 
 // Use switch 0 to choose turn on and off            
 assign Sample_Clk_Signal = SW[0] ? Audio:0;
