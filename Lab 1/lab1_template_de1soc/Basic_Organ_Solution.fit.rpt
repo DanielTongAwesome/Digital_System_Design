@@ -1,5 +1,5 @@
 Fitter report for Basic_Organ_Solution
-Mon Jan 21 22:11:07 2019
+Mon Jan 21 22:49:09 2019
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -67,7 +67,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Mon Jan 21 22:11:06 2019      ;
+; Fitter Status                   ; Successful - Mon Jan 21 22:49:08 2019      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; Basic_Organ_Solution                       ;
 ; Top-level Entity Name           ; Basic_Organ_Solution                       ;
@@ -156,12 +156,14 @@ agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.55        ;
+; Average used               ; 1.54        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;  18.3%      ;
+;     Processor 2            ;  18.6%      ;
+;     Processor 3            ;  17.7%      ;
+;     Processor 4            ;  17.4%      ;
 ;     Processors 5-8         ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -5395,24 +5397,24 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "VGA_R[7]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_SYNC_N" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_VS" is assigned to location or region, but does not exist in design
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:51
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:53
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:20
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:21
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:30
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:31
 Info (170193): Fitter routing operations beginning
 Info (170089): 2e+03 ns of routing delay (approximately 1.2% of available device routing delay) has been added to meet hold timing. For more information, refer to the Estimated Delay Added for Hold Timing section in the Fitter report.
 Info (170195): Router estimated average interconnect usage is 3% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 44% of the available device resources in the region that extends from location X11_Y0 to location X21_Y10
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:38
-Info (11888): Total time spent on timing analysis during the Fitter is 26.45 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 27.06 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:02:04
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:02:08
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169064): Following 67 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
     Info (169065): Pin AUD_BCLK has a permanently enabled output enable
@@ -5484,10 +5486,10 @@ Warning (169064): Following 67 pins have no output enable or a GND or VCC output
     Info (169065): Pin GPIO_0[12] has a permanently enabled output enable
 Info (144001): Generated suppressed messages file C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/Basic_Organ_Solution.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 116 warnings
-    Info: Peak virtual memory: 6914 megabytes
-    Info: Processing ended: Mon Jan 21 22:11:16 2019
-    Info: Elapsed time: 00:05:31
-    Info: Total CPU time (on all processors): 00:09:06
+    Info: Peak virtual memory: 6919 megabytes
+    Info: Processing ended: Mon Jan 21 22:49:18 2019
+    Info: Elapsed time: 00:05:41
+    Info: Total CPU time (on all processors): 00:09:25
 
 
 +----------------------------+

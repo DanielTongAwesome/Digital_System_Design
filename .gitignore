@@ -1,8 +1,8 @@
 # ignore file list
-work
-db
-incremental_db
-simulation
+work/
+db/
+incremental_db/
+simulation/
 
 # OS generated files #
 .DS_Store
