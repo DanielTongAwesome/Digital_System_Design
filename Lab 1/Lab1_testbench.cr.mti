@@ -1,0 +1,8 @@
+{C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/Clock_Divider.v} {1 {vlog -work Lab1-Top -stats=none {C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider.v}
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module Clock_Divider
+
+Top level modules:
+	Clock_Divider
+
+} {} {}}

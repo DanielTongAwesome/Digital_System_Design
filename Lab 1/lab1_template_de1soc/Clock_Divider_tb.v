@@ -30,11 +30,17 @@ module Clock_Divider_Test();
         count_end = 32'd2;
         #20;
         reset = 1'b0;
-        #40;
+        #170;
+        reset = 1'b1;
         count_end = 32'd3;
-        #40;
-        count_end = 32'd4;
-        #40;
+        #20;
+        reset = 1'b0;
+        #250;
+        reset = 1'b1;
+        count_end = 32'd4;        
+        #20;
+        reset = 1'b0;
+        #330;
         $stop;
     end
 endmodule
