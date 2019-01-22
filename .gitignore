@@ -1,5 +1,6 @@
 # ignore file list
 work\
+History\
 db\
 incremental_db\
 simulation\
