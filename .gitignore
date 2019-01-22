@@ -1,4 +1,8 @@
 # ignore file list
+work
+db
+incremental_db
+simulation
 
 # OS generated files #
 .DS_Store
@@ -62,9 +66,5 @@ Thumbs.db
 *.tdb
 *.qip
 *.sopcinfo
-work/
-db/
-incremental_db/
-simulation/
-output_files/
-*.qarlog
+
+
