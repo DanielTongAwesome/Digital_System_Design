@@ -1,0 +1,94 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/altera/14.1
+vClock_Divider
+Z0 !s110 1548134850
+!i10b 1
+!s100 Y5I[DMGG[mXVLI[AXDhDF2
+Io4oZ36JEaI<::IRS6eVW92
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 dC:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1
+w1548131432
+8C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider.v
+FC:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider.v
+L0 8
+Z3 OV;L;10.3c;59
+r1
+!s85 0
+31
+!s108 1548134850.311000
+!s107 C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider.v|
+!s90 -reportprogress|300|-work|Lab1-Top|-stats=none|C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider.v|
+!i113 1
+Z4 o-work Lab1-Top
+n@clock_@divider
+vClock_Divider_Test
+R0
+!i10b 1
+!s100 >?]gX8m:g3fnIPY6hCH:H0
+Il?IYcm>>W2EBIIo8lXj_]0
+R1
+R2
+w1548133615
+8C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider_tb.v
+FC:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider_tb.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1548134850.098000
+!s107 C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider_tb.v|
+!s90 -reportprogress|300|-work|Lab1-Top|-stats=none|C:\Users\13358\Dropbox\CPEN311_Lab_Assignment\Lab 1\lab1_template_de1soc\Clock_Divider_tb.v|
+!i113 1
+R4
+n@clock_@divider_@test
+vLED_Control
+R0
+!i10b 1
+!s100 jNCeo4JZT0K3fZVUn8Q@=2
+IEJP?22<eQCjm@m4XTCjNY1
+R1
+R2
+w1547763603
+8C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control.v
+FC:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control.v
+L0 6
+R3
+r1
+!s85 0
+31
+!s108 1548134850.518000
+!s107 C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control.v|
+!s90 -reportprogress|300|-work|Lab1-Top|-stats=none|C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control.v|
+!i113 1
+R4
+n@l@e@d_@control
+vLED_Control_Test
+R0
+!i10b 1
+!s100 [kdc9H^[DzY_7MS^67GiP0
+IJ?gaYaVcGz[Ije<8OTT3o2
+R1
+R2
+w1548134835
+8C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control_tb.v
+FC:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control_tb.v
+L0 4
+R3
+r1
+!s85 0
+31
+!s108 1548134850.734000
+!s107 C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control_tb.v|
+!s90 -reportprogress|300|-work|Lab1-Top|-stats=none|C:/Users/13358/Dropbox/CPEN311_Lab_Assignment/Lab 1/lab1_template_de1soc/LED_Control_tb.v|
+!i113 1
+R4
+n@l@e@d_@control_@test
