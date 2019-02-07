@@ -34,7 +34,7 @@ module Assignment2Q2(clk, reset, restart, pause, go_to_third, terminal, out1, ou
 			endcase
 	end
 	// output logic combined with state-bit
-	always_ff @(posedge clk) begin
+	always_comb begin
 		terminal <= state[8];
 		out1 <= state[7:5];
 		out2 <= state[4:2];
