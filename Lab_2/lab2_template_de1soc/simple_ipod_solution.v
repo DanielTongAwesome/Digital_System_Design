@@ -250,6 +250,26 @@ flash flash_inst (
 );
             
 
+// 1. Generate 22KHz clock to read the flash memory
+wire Clock_22KHz;
+wire [31:0] count_end_22KHz;
+wire Clock_Reset = 0;
+Clock_Divider Clock_Divider_Flash_Memory(   .clock_in(CLK_50M), 
+                                            .clock_out(Clock_22KHz), 
+                                            .reset(Clock_Reset), 
+                                            .count_end(count_end_22KHz));
+
+// 2. Speed Control -- change the count_end_22KHz to adjust the speed of play
+Speed_Control Speed_Control(    .clk(CLK_50M), 
+                                .speed_up(speed_up_event), 
+                                .speed_down(speed_down_event), 
+                                .speed_reset(speed_reset_event), 
+                                .out_count_to(count_end_22KHz));
+
+
+// get aduio data and change address
+
+
 assign Sample_Clk_Signal = Clock_1KHz;
 
 //Audio Generation Signal
