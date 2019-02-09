@@ -266,17 +266,71 @@ Speed_Control Speed_Control(    .clk(CLK_50M),
                                 .speed_reset(speed_reset_event), 
                                 .out_count_to(count_end_22KHz));
 
+// 3. Keyboard_Control Module
+// keyboard output wire
+wire direction, read_signal, restart_read;
+// keyboard input wire
+wire flash_read_done;
+Keyboard_Control Keyboard_Control(  // input 
+                                    .clk(CLK_50M), 
+                                    .kbd_data_ready(kbd_data_ready), 
+                                    .flash_read_finished(flash_read_done), 
+                                    .key_pressed(kbd_ascii_data),
+                                    // output
+                                    .dir(direction),
+                                    .start_read_flash(read_signal),
+                                    .restart(restart_read));
 
-// get aduio data and change address
+// 4. Memory Flash Read Module
+wire flash_end;
+wire start_read_flash;
+Flash_Read  Flash_Read_Module(  // input
+                                .clk(CLK_50M),
+                                .start(start_read_flash),
+                                .read(flash_mem_read),
+                                .wait_Request(flash_mem_waitrequest);
+                                .data_Valid(flash_mem_readdatavalid);
+                                // output 
+                                .finish(flash_end));
+
+// 5. Get aduio data and change address -- Addr_control
+wire [7:0] audio_signal;
+Memory_Address_Control Flash_Memory_Control( // input
+                                                .clk(CLK_50M), 
+                                                .sychronized_clock(sychronized_clock_22KHz), 
+                                                .start(read_signal), 
+                                                .dir(direction), 
+                                                .restart(restart_read), 
+                                                .end_Flash(flash_end),
+                                                .song_Data(flash_mem_readdata), // -- flash_men_readdata
+                                                // output
+                                                .start_Flash(start_read_flash), 
+                                                .finish(flash_read_done), 
+                                                .read(flash_mem_read),
+                                                .address(flash_mem_address), 
+                                                .byteenable(flash_mem_byteenable),  
+                                                .out_Data(audio_signal));
+
+// 6. Sychronizer
+wire sychronized_clock_22KHz;
+Sychronizer Sychronizer_22KHz(  .async_sig(Clock_22KHz), 
+                                .outclk(CLK_50M), 
+                                .out_sync_sig(sychronized_clock_22KHz));
+
+
 
 
 assign Sample_Clk_Signal = Clock_1KHz;
 
 //Audio Generation Signal
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
-wire [7:0] audio_data = {~Sample_Clk_Signal,{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
+//wire [7:0] audio_data = {~Sample_Clk_Signal,{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
 
+wire [7:0] audio_data = audio_signal; 
 
+// Generate LED display
+LED_Control LED_Control_1Hz(    .clock_in(Clock_1Hz), 
+                                .LEDR(LED[7:0]));
 
 //======================================================================================
 // 
