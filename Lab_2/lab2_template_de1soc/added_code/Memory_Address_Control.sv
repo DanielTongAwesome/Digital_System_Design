@@ -36,21 +36,21 @@ module Memory_Address_Control(  // input
     assign byteenable = 4'b1111; // default
 
     typedef enum logic [5:0] { 
-        idle = 6'b0000_00; 
-        readFlash = 6'b0001_01; 
-        get_data_1 = 6'b0010_00; 
-        read_data_1 = 6'b0011_00; 
-        get_data_2 = 6'b0100_00; 
-        read_data_2 = 6'b0101_00; 
-        checkInc = 6'b0110_00; 
-        inc_addr = 6'b0111_00; 
-        dec_addr = 6'b1000_00; 
-        finished = 6'b1001_10; 
+        idle = 6'b0000_00, 
+        readFlash = 6'b0001_01, 
+        get_data_1 = 6'b0010_00, 
+        read_data_1 = 6'b0011_00, 
+        get_data_2 = 6'b0100_00, 
+        read_data_2 = 6'b0101_00, 
+        checkInc = 6'b0110_00, 
+        inc_addr = 6'b0111_00, 
+        dec_addr = 6'b1000_00, 
+        finished = 6'b1001_10 
      } state_Type;
-     start_Flash state = idle;
+     state_Type state = idle;
 
     assign start_Flash = state[0];
-    assign read = state[0]
+    assign read = state[0];
     assign finish = state[1];
 
     // state transition logic
@@ -90,19 +90,19 @@ module Memory_Address_Control(  // input
             read_data_1: begin
                             if (dir) out_Data <= song_Data[31:24];
                             else out_Data <= song_Data[15:8];
-                            address <= address
+                            address <= address;
             end
 
             read_data_2: begin
                             if (dir) out_Data <= song_Data[31:24];
                             else out_Data <= song_Data[15:8];
-                            address <= address
+                            address <= address;
             end
 
             dec_addr: begin
                             if (restart) address <= `address_max;
                             else begin
-                                address <= address - 23d'1;
+                                address <= address - 23'd1;
                                 if (address == 0) begin
                                     address <= `address_max;
                                 end
@@ -113,7 +113,7 @@ module Memory_Address_Control(  // input
             inc_addr: begin
                             if (restart) address <= 0;
                             else begin
-                                address <= address + 23d'1;
+                                address <= address + 23'd1;
                                 if (address > `address_max) begin
                                     address <= 0;
                                 end

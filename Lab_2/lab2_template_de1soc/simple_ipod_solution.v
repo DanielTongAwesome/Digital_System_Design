@@ -275,7 +275,7 @@ Keyboard_Control Keyboard_Control(  // input
                                     .clk(CLK_50M), 
                                     .kbd_data_ready(kbd_data_ready), 
                                     .flash_read_finished(flash_read_done), 
-                                    .key_pressed(kbd_ascii_data),
+                                    .key_pressed(kbd_received_ascii_code),
                                     // output
                                     .dir(direction),
                                     .start_read_flash(read_signal),
@@ -288,8 +288,8 @@ Flash_Read  Flash_Read_Module(  // input
                                 .clk(CLK_50M),
                                 .start(start_read_flash),
                                 .read(flash_mem_read),
-                                .wait_Request(flash_mem_waitrequest);
-                                .data_Valid(flash_mem_readdatavalid);
+                                .wait_Request(flash_mem_waitrequest),
+                                .data_Valid(flash_mem_readdatavalid),
                                 // output 
                                 .finish(flash_end));
 

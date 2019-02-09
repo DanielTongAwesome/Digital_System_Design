@@ -14,12 +14,12 @@ module Flash_Read(  // input
                     clk,
                     start,
                     read,
-                    wait_Request;
-                    data_Valid;
+                    wait_Request,
+                    data_Valid,
                     // output 
                     finish);
 
-    input clk, start, read, wait_Requestm data_Valid;
+    input clk, start, read, wait_Request, data_Valid;
     output finish;
 
     // state-bit design
