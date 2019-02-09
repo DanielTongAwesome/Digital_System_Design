@@ -36,20 +36,20 @@ module Keyboard_Control(// input
         
         // state-bit output dir play reset
         // default state
-        check_key = 6'b000_000;
+        check_key 	 = 6'b000_000,
 
         // Forward
-        Forward = 6'b001_001;
-        Forward_reset = 6'b010_101;
-        Forward_pause = 6'b011_000;
+        Forward 		 = 6'b001_001,
+        Forward_reset = 6'b010_101,
+        Forward_pause = 6'b011_000,
         
         // Backward
-        Backward = 6'b100_011;
-        Backward_reset = 6'b101_111;
-        Backward_pause = 6'b110_000;
+        Backward 		  = 6'b100_011,
+        Backward_reset = 6'b101_111,
+        Backward_pause = 6'b110_000
     
-    } state;
-    state = check_key;
+    } state_Type;
+    state_Type state = check_key;
 
     // key E,D,B,F,R press ascii code
     parameter character_E =8'h45;
@@ -85,7 +85,7 @@ module Keyboard_Control(// input
             // Press E
             // Forward play state --- R & kbd_data_ready -> forward_reset 
             //                        D -> forward_pause   B -> Backward
-            Forward:    if (key_pressed == character_R || key_pressed = character_lowercase_r) begin
+            Forward:    if (key_pressed == character_R || key_pressed == character_lowercase_r) begin
                             if (kbd_data_ready) state <= Forward_reset; // only reset when key pressed
                             else state <= Forward;
                         end
