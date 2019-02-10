@@ -89,13 +89,13 @@ module Memory_Address_Control(  // input
 
             read_data_1: begin
                             if (dir) out_Data <= song_Data[31:24];
-                            else out_Data <= song_Data[15:8];
+                            else out_Data <= song_Data[7:0];
                             address <= address;
             end
 
             read_data_2: begin
-                            if (dir) out_Data <= song_Data[31:24];
-                            else out_Data <= song_Data[15:8];
+                            if (dir) out_Data <= song_Data[7:0];
+                            else out_Data <= song_Data[31:24];
                             address <= address;
             end
 
