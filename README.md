@@ -11,4 +11,4 @@ Below is the project checklist:
  - [ ] Project 5 -- Nios + Qsys + Direct Digital Synthesis + LFSR + Modulations + Clock Domains (+ a little bit of audio and VGA)
 
  - [x] Assignment 1 -- Basic
- - [ ] Assignment 2 -- FSM
+ - [x] Assignment 2 -- FSM
