@@ -76,7 +76,7 @@ module Keyboard_Control(// input
     assign restart          = state[3];
     assign dir              = state[2];
     assign start_read_flash = state[1];
-    assign bonus_control    = state[0]
+    assign bonus_control    = state[0];
 
     // state transaction
     always_ff @(posedge clk) begin

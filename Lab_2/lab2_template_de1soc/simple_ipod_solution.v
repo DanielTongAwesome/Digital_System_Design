@@ -325,7 +325,7 @@ wire liangzhu_output_wire;
 wire liangzhu_output_control;
 liangzhu_player liangzhu_player_extra_feature(  .clk(CLK_50M),
                                                 .i_button_n(~liangzhu_output_control),
-                                                .o_audio(Music_Output));
+                                                .o_audio(liangzhu_output_wire));
 
 
 assign Sample_Clk_Signal = Clock_1KHz;
@@ -334,7 +334,7 @@ assign Sample_Clk_Signal = Clock_1KHz;
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
 //wire [7:0] audio_data = {~Sample_Clk_Signal,{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
 
-wire [7:0] audio_data = audio_signal; 
+wire [7:0] audio_data = liangzhu_output_control ? liangzhu_output_wire : audio_signal; 
 
 // Generate LED display
 LED_Control LED_Control_1Hz(    .clock_in(Clock_1Hz), 
