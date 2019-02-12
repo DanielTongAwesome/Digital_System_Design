@@ -24,29 +24,33 @@ module Keyboard_Control(// input
                         // output
                         dir,
                         start_read_flash,
-                        restart);
+                        restart,
+                        bonus_control);
 
     // initialize input and output
     input clk, kbd_data_ready, flash_read_finished;
     input [7:0] key_pressed;
-    output dir,start_read_flash,restart;
+    output dir,start_read_flash,restart, bonus_control;
 
     // state-bit enum
-    typedef enum logic [5:0] { 
+    typedef enum logic [6:0] { 
         
         // state-bit output dir play reset
         // default state
-        check_key 	 = 6'b000_000,
+        check_key 	    = 7'b000_000_0,
 
         // Forward
-        Forward 		 = 6'b001_001,
-        Forward_reset = 6'b010_101,
-        Forward_pause = 6'b011_000,
+        Forward 		= 7'b001_001_0,
+        Forward_reset   = 7'b010_101_0,
+        Forward_pause   = 7'b011_000_0,
         
         // Backward
-        Backward 		  = 6'b100_011,
-        Backward_reset = 6'b101_111,
-        Backward_pause = 6'b110_000
+        Backward 	    = 7'b100_011_0,
+        Backward_reset  = 7'b101_111_0,
+        Backward_pause  = 7'b110_000_0,
+
+        // Bonus
+        secret_s        = 7'b111_000_1
     
     } state_Type;
     state_Type state = check_key;
@@ -63,11 +67,16 @@ module Keyboard_Control(// input
     parameter character_R =8'h52;
     parameter character_lowercase_r= 8'h72;
 
+    // bonus parameter
+    parameter character_S =8'h53;
+    parameter character_lowercase_s= 8'h73;
    
 
-    assign restart          = state[2];
-    assign dir              = state[1];
-    assign start_read_flash = state[0];
+
+    assign restart          = state[3];
+    assign dir              = state[2];
+    assign start_read_flash = state[1];
+    assign bonus_control    = state[0]
 
     // state transaction
     always_ff @(posedge clk) begin
@@ -78,6 +87,7 @@ module Keyboard_Control(// input
             // at check key state ---  E -> forward   B -> Backward
             check_key:  if (key_pressed == character_E || key_pressed == character_lowercase_e)  state <= Forward;
                         else if (key_pressed == character_B || key_pressed == character_lowercase_b) state <= Backward;
+                        else if (key_pressed == character_S || key_pressed == character_lowercase_s) state <= secret_s;
                         else state <= check_key;
             
             //------------------------ Forward Operation Logic ---------------------------//
@@ -137,6 +147,8 @@ module Keyboard_Control(// input
                             else if (key_pressed == character_F || key_pressed == character_lowercase_f) state <= Forward_pause;
                             else state <= Backward_pause;
             
+
+            secret_s: if (key_pressed == character_R || key_pressed == character_lowercase_r) state <= check_key;
 
             // defualt check key state 
             default: state <= check_key;
