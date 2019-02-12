@@ -319,6 +319,11 @@ Sychronizer Sychronizer_22KHz(  .async_sig(Clock_22KHz),
 
 
 
+// extra feature: play 梁祝
+wire liangzhu_output_wire;
+liangzhu_player liangzhu_player_extra_feature(  .clk(CLK_50M),
+                                                .i_button_n(SW[4]),
+                                                .o_audio(liangzhu_output_wire));
 
 assign Sample_Clk_Signal = Clock_1KHz;
 
@@ -326,7 +331,7 @@ assign Sample_Clk_Signal = Clock_1KHz;
 //Note that the audio needs signed data - so convert 1 bit to 8 bits signed
 //wire [7:0] audio_data = {~Sample_Clk_Signal,{7{Sample_Clk_Signal}}}; //generate signed sample audio signal
 
-wire [7:0] audio_data = audio_signal; 
+wire [7:0] audio_data = SW[4]? liangzhu_output_wire : audio_signal; 
 
 // Generate LED display
 LED_Control LED_Control_1Hz(    .clock_in(Clock_1Hz), 
