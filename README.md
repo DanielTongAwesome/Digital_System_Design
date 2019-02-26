@@ -12,3 +12,4 @@ Below is the project checklist:
 
  - [x] Assignment 1 -- Basic
  - [x] Assignment 2 -- FSM
+ - [x] Assignment 3 -- share_access_to_one_module
