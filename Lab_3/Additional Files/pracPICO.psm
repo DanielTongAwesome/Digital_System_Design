@@ -184,30 +184,20 @@
                     ;
                     ; Display welcome message for design
                     ;
-      main_program: LOAD s5, 10                         ;Line 1 position 0
-                    CALL LCD_cursor
-                    CALL disp_line1	        ;Display a message
-			  LOAD s5, 20                         ;Line 2 position 0
-                    CALL LCD_cursor
-                    CALL disp_line2	        ;Display a message
+                    
+      main_program: load s5, 01                         ;Line 1 position 0
+                    output s5, led0;
+                    call delay_1s;
 
-                    CALL delay_1s;
-			
-    check_switches: INPUT s0,DATA_IN_PORT     		;get status of switches
-			  COMPARE s0, 00    			;test to see if switches are 0
-			  JUMP Z, just_clear_the_display 	;if the switches are 0, then just clear the display
-		
-			  CALL LCD_shift_left               ;if the switches are not 0, then shift the display left 
-     			  CALL delay_1s;
-			  JUMP check_switches;
+                    load s5, 00;
+                    output s5, led0;
+                    call delay_1s;
 
-just_clear_the_display:                               ;if the switches are 0, then just clear the display
-			  CALL LCD_clear;
-		        CALL delay_1s;
-			  JUMP main_program;
+                    jump main_program;
 
-			  ;
-       		  
+                 
+
+			        ;
                     ;**************************************************************************************
                     ; Routines to display hexadecimal values on LCD display
                     ;**************************************************************************************
@@ -575,13 +565,67 @@ disp_line2:         LOAD s5, character_t
                     ; The interrupt is used purely to provide a 1 second heart beat binary counter pattern
                     ; on the 8 LEDs.
                     ;
-               ISR: STORE s0, ISR_preserve_s0           ;preserve register
-                    FETCH s0, LED_pattern               ;read current counter value
-                    ADD s0, 01                          ;increment counter
-                    STORE s0, LED_pattern               ;store new counter value
-                    OUTPUT s0, LED_port                 ;display counter value on LEDs
-                    FETCH s0, ISR_preserve_s0           ;restore register
+                    ;
+                    ; The following code flash the led and shift each second
+                    ;
+
+               ISR: ; read from the preserved registers
+                    STORE s0, ISR_preserve_s0           ;preserve register
+                    STORE s1, ISR_preserve_s1           ;preserve register
+                    STORE s2, ISR_preserve_s2           ;preserve register
+                    STORE s3, ISR_preserve_s3           ;preserve register
+                    
+                    ; read input value
+                    INPUT s0, DATA_IN_PORT
+
+                    ; read varaiables value
+                    FETCH s1, ACCUMULATE_LOW
+                    FETCH s2, ACCUMULATE_HIGH
+                    FETCH s3, COUNTER
+
+                    TEST s0, 80
+                    CALL C, TAKE_ABS_DATA
+                
+    TAKE_ABS_DATA:  SUB s0, 01
+                    XOR s0, FF				;take complement
+                    JUMP ADD_SIGNAL_VALUE
+
+ ADD_SIGNAL_VALUE:  ADD s1, s0
+                    ADDCY s2, 00
+                    JUMP COUNT_SIGNAL 
+     
+     COUNT_SIGNAL:  ADD s3, 01
+                    ; if overflow go to output
+                    JUMP C, OUTPUT
+
+                    ; else store 
+                    STORE s1, ACCUMULATE_LOW            ;store variable
+                    STORE s2, ACCUMULATE_HIGH           ;store varibale
+                    STORE s3, COUNTER                   ;store variable
+
+                    FETCH s0, ISR_preserve_s0           ;preserve register
+                    FETCH s1, ISR_preserve_s1           ;preserve register
+                    FETCH s2, ISR_preserve_s2           ;preserve register
+                    FETCH s3, ISR_preserve_s3           ;preserve register
                     RETURNI ENABLE
+   
+          OUTPUT:   ; output the accumulate low
+                    OUTPUT s1, LED_port                    
+                    LOAD s1, 00
+                    LOAD s2, 00
+                    LOAD s3, 00
+
+                    STORE s1, ACCUMULATE_LOW            ;store variable
+                    STORE s2, ACCUMULATE_HIGH           ;store varibale
+                    STORE s3, COUNTER                   ;store variable
+
+                    FETCH s0, ISR_preserve_s0           ;preserve register
+                    FETCH s1, ISR_preserve_s1           ;preserve register
+                    FETCH s2, ISR_preserve_s2           ;preserve register
+                    FETCH s3, ISR_preserve_s3           ;preserve register
+                    RETURNI ENABLE
+
+
                     ;
                     ;
                     ;**************************************************************************************
