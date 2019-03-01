@@ -342,15 +342,20 @@ LED_Control LED_Control_1Hz(    .clock_in(Clock_1Hz),
                                 .LEDR(LED[7:0]));
 */
 
+reg CLK_25M;
+
+always @(posedge CLK_50M) begin
+	if (CLK_50M) CLK_25M <= !CLK_25M;
+end
 
 //Lab 3 picoBlaze
 picoblaze_template
 #(
-.clk_freq_in_hz(11000000)
+.clk_freq_in_hz(25000000)
 ) 
 picoblaze_template_inst(
                       .led({LED[9:2], LED[0]}),
-                      .clk(),
+                      .clk(CLK_25M),
                       .input_data(audio_data));
 
 //======================================================================================
