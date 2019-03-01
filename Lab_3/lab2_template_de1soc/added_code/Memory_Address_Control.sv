@@ -24,11 +24,12 @@ module Memory_Address_Control(  // input
                                 read,
                                 address, 
                                 byteenable,  
-                                out_Data);
+                                out_Data,
+										  volume_sig);
     
     input clk, sychronized_clock, start, dir, restart, end_Flash;
     input [31:0] song_Data;
-    output start_Flash, finish,read;
+    output start_Flash, finish,read,volume_sig;
     output [22:0] address;
     output [3:0] byteenable;
     output [7:0] out_Data;
@@ -36,17 +37,17 @@ module Memory_Address_Control(  // input
     assign byteenable = 4'b1111; // default
 
     // state enum 
-    typedef enum logic [5:0] { 
-        idle        = 6'b0000_00, 
-        readFlash   = 6'b0001_01, 
-        get_data_1  = 6'b0010_00, 
-        read_data_1 = 6'b0011_00, 
-        get_data_2  = 6'b0100_00, 
-        read_data_2 = 6'b0101_00, 
-        checkInc    = 6'b0110_00, 
-        inc_addr    = 6'b0111_00, 
-        dec_addr    = 6'b1000_00, 
-        finished    = 6'b1001_10 
+    typedef enum logic [6:0] { 
+        idle        = 7'b0000_000, 
+        readFlash   = 7'b0001_001, 
+        get_data_1  = 7'b0010_000, 
+        read_data_1 = 7'b0011_100, 
+        get_data_2  = 7'b0100_000, 
+        read_data_2 = 7'b0101_100, 
+        checkInc    = 7'b0110_000, 
+        inc_addr    = 7'b0111_000, 
+        dec_addr    = 7'b1000_000, 
+        finished    = 7'b1001_010
      } state_Type;
      state_Type state = idle; // set default state
 
@@ -54,6 +55,7 @@ module Memory_Address_Control(  // input
     assign start_Flash = state[0];
     assign read = state[0];
     assign finish = state[1];
+	 assign volume_sig = state[2];
 
     // state transition logic
     always_ff @(posedge clk) begin

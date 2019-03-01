@@ -296,6 +296,7 @@ Flash_Read  Flash_Read_Module(  // input
 
 // 5. Get aduio data and change address -- Addr_control
 wire [7:0] audio_signal;
+wire interrupt_wire;
 Memory_Address_Control Flash_Memory_Control( // input
                                                 .clk(CLK_50M), 
                                                 .sychronized_clock(sychronized_clock_22KHz), 
@@ -310,7 +311,8 @@ Memory_Address_Control Flash_Memory_Control( // input
                                                 .read(flash_mem_read),
                                                 .address(flash_mem_address), 
                                                 .byteenable(flash_mem_byteenable),  
-                                                .out_Data(audio_signal));
+                                                .out_Data(audio_signal),
+																.volume_sig(interrupt_wire));
 
 // 6. Sychronizer
 wire sychronized_clock_22KHz;
@@ -354,9 +356,11 @@ picoblaze_template
 .clk_freq_in_hz(25000000)
 ) 
 picoblaze_template_inst(
-                      .led({LED[9:2], LED[0]}),
+                      .led(LED[9:2]),
+							 .led0(LED[0]),
                       .clk(CLK_25M),
-                      .input_data(audio_data));
+                      .input_data(audio_data),
+							 .interrupt(interrupt_wire));
 
 //======================================================================================
 // 
