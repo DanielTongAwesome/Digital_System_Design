@@ -6,7 +6,7 @@ picoblaze_template
 #(
 parameter clk_freq_in_hz = 25000000
 ) (
-				output reg[7:0] led,
+				output reg[8:0] led,
 				input clk,
 				input [7:0] input_data
 	);
@@ -138,8 +138,10 @@ end
 
         //LED is port 80 hex 
         if (write_strobe & port_id[7])  //clock enable 
-          led <= out_port;
+          led[8:1] <= out_port;
 
+        if (write_strobe & port_id[6])  //clock enable 
+          led[0] <= out_port;
   end
 
 endmodule

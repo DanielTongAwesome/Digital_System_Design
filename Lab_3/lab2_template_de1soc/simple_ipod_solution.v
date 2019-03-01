@@ -123,9 +123,9 @@ output                      DRAM_WE_N;
 //=======================================================
 // Input and output declarations
 logic CLK_50M;
-logic  [7:0] LED;
+logic  [9:0] LED;
 assign CLK_50M =  CLOCK_50;
-assign LEDR[7:0] = LED[7:0];
+assign LEDR[9:0] = LED[9:0];
 
 //Character definitions
 
@@ -336,9 +336,22 @@ assign Sample_Clk_Signal = Clock_1KHz;
 
 wire [7:0] audio_data = liangzhu_output_control ? liangzhu_output_wire : audio_signal; 
 
+/*
 // Generate LED display
 LED_Control LED_Control_1Hz(    .clock_in(Clock_1Hz), 
                                 .LEDR(LED[7:0]));
+*/
+
+
+//Lab 3 picoBlaze
+picoblaze_template
+#(
+.clk_freq_in_hz(11000000)
+) 
+picoblaze_template_inst(
+                      .led({LED[9:2], LED[0]}),
+                      .clk(),
+                      .input_data(audio_data));
 
 //======================================================================================
 // 

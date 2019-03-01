@@ -15,7 +15,7 @@
                     ;
                     CONSTANT LED_port, 80               ;8 simple LEDs. Is an OUTPUT port.
 			        CONSTANT DATA_IN_PORT, 00	        ;input data port. this is an INPUT port.
-
+                    CONSTANT led0, 40
                  
                     ;
                     ;
@@ -184,7 +184,7 @@
                     ;
                     ; Display welcome message for design
                     ;
-                    
+
       main_program: load s5, 01                         ;Line 1 position 0
                     output s5, led0;
                     call delay_1s;
