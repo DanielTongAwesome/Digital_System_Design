@@ -58,7 +58,10 @@
                     CONSTANT ISR_preserve_s3, 03        ;Preserve s3 contents during ISR
                     ;
                     CONSTANT LED_pattern, 04            ;remember state of LEDs (8-bit counter in this case)
-                   
+
+                    CONSTANT ACCUMULATE_LOW, 05
+                    CONSTANT ACCUMULATE_HIGH, 06
+                    CONSTANT COUNTER, 07
                     ;
                     ;**************************************************************************************
                     ; Useful data constants
