@@ -175,138 +175,6 @@
 					CALL delay_1s
 					JUMP main_program
                  
-
-			        ;
-                    ;**************************************************************************************
-                    ; Routines to display hexadecimal values on LCD display
-                    ;**************************************************************************************
-                    ;
-                    ;
-                    ; Convert hexadecimal value provided in register s0 into ASCII characters
-                    ;
-                    ; The value provided must can be any value in the range 00 to FF and will be converted into
-                    ; two ASCII characters.
-                    ;     The upper nibble will be represented by an ASCII character returned in register s3.
-                    ;     The lower nibble will be represented by an ASCII character returned in register s2.
-                    ;
-                    ; The ASCII representations of '0' to '9' are 30 to 39 hexadecimal which is simply 30 hex
-                    ; added to the actual decimal value. The ASCII representations of 'A' to 'F' are 41 to 46
-                    ; hexadecimal requiring a further addition of 07 to the 30 already added.
-                    ;
-                    ; Registers used s0, s2 and s3.
-                    ;
- hex_byte_to_ASCII: LOAD s2, s0                         ;remember value supplied
-                    SR0 s0                              ;isolate upper nibble
-                    SR0 s0
-                    SR0 s0
-                    SR0 s0
-                    CALL hex_to_ASCII                   ;convert
-                    LOAD s3, s0                         ;upper nibble value in s3
-                    LOAD s0, s2                         ;restore complete value
-                    AND s0, 0F                          ;isolate lower nibble
-                    CALL hex_to_ASCII                   ;convert
-                    LOAD s2, s0                         ;lower nibble value in s2
-                    RETURN
-                    ;
-                    ; Convert hexadecimal value provided in register s0 into ASCII character
-                    ;
-                    ;Register used s0
-                    ;
-      hex_to_ASCII: SUB s0, 0A                          ;test if value is in range 0 to 9
-                    JUMP C, number_char
-                    ADD s0, 07                          ;ASCII char A to F in range 41 to 46
-       number_char: ADD s0, 3A                          ;ASCII char 0 to 9 in range 30 to 40
-                    RETURN
-                    ;
-                    ;
-                    ; Display the two character HEX value of the register contents 's0' on the LCD
-                    ; at the current cursor position.
-                    ;
-                    ; Registers used s0, s1, s2, s3, s4, s5
-                    ;
-  display_hex_byte: CALL hex_byte_to_ASCII
-                    LOAD s5, s3
-                    CALL LCD_write_data
-                    LOAD s5, s2
-                    CALL LCD_write_data
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ; Display the 32-bit value stored in 4 ascending memory locations as an 8 character
-                    ; HEX value at the current cursor position. Register s7 must contain the memory
-                    ; location of the most significant byte (which is also the highest address).
-                    ;
-                    ; Registers used s0, s1, s2, s3, s4, s5, s6, s7
-                    ;
-display_hex_32_bit: LOAD s6, 04                         ;4 bytes to display
-       disp32_loop: FETCH s0, (s7)                      ;read byte
-                    CALL display_hex_byte               ;display byte
-                    SUB s7, 01                          ;decrement pointer
-                    SUB s6, 01                          ;count bytes displayed
-                    RETURN Z
-                    JUMP disp32_loop
-                    ;
-                    ;
-                    ;**************************************************************************************
-                    ; LCD text messages
-                    ;**************************************************************************************
-                    ;
-                    ;
-                    ;
-                    ; Display a space on LCD at current cursor position
-                    ;
-        disp_space: LOAD s5, character_space
-                    CALL LCD_write_data
-                    RETURN
-                    ;
-                    ; Display a message
-                    ;
-        disp_line1: LOAD s5, character_F
-                    CALL LCD_write_data
-                    LOAD s5, character_P
-                    CALL LCD_write_data
-                   
-			        LOAD s5, character_G
-                    CALL LCD_write_data
-                    LOAD s5, character_A
-                    CALL LCD_write_data
-                    LOAD s5, character_s
-                    CALL LCD_write_data
-					CALL disp_space
-			  
-			        LOAD s5, character_a
-                    CALL LCD_write_data
-			        LOAD s5, character_r
-                    CALL LCD_write_data
- 			        LOAD s5, character_e
-                    CALL LCD_write_data
-                   
-                    RETURN
-
-disp_line2:         LOAD s5, character_t
-                    CALL LCD_write_data
-                    LOAD s5, character_h
-                    CALL LCD_write_data
- 			        LOAD s5, character_e
-                    CALL LCD_write_data
-                                     
-  			  ;
-                    CALL disp_space
-			  ;
-		
-                    LOAD s5, character_B
-                    CALL LCD_write_data
-                    LOAD s5, character_E
-                    CALL LCD_write_data
-                    LOAD s5, character_S
-                    CALL LCD_write_data
-                    LOAD s5, character_T
-                    CALL LCD_write_data
-                    
-					RETURN
-
-                 
                     ;**************************************************************************************
                     ; Software delay routines
                     ;**************************************************************************************
@@ -373,171 +241,6 @@ disp_line2:         LOAD s5, character_t
                     ;
                     ;
                     ;**************************************************************************************
-                    ; LCD Character Module Routines
-                    ;**************************************************************************************
-                    ;
-                    ; LCD module is a 16 character by 2 line display but all displays are very similar
-                    ; On the Spartan-3A Starter Kit the 8-wire data interface can be used.
-                    ;
-                    ; The LCD modules are relatively slow and software delay loops are used to slow down
-                    ; KCPSM3 adequately for the LCD to communicate. The delay routines are provided in
-                    ; a different section (see above in this case).
-                    ;
-                    ;
-                    ;
-                    ; Write 8-bit instruction to LCD display.
-                    ;
-                    ; The 8-bit instruction should be provided in register s5.
-                    ; After writing there is a delay >40us to allow time for the LCD process the instruction.
-                    ;
-                    ; Registers used s0,s1,s4,s5
-                    ;
-    LCD_write_inst: OUTPUT s5, LCD_output_port          ;data output
-                    LOAD s4, 00                         ;RS=0 Instruction, RW=0 Write, E=0
-                    OUTPUT s4, LCD_control_port
-                    CALL LCD_pulse_E
-                    CALL delay_40us                     ;wait >40us
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ;
-                    ; Write 8-bit data to LCD display.
-                    ;
-                    ; The 8-bit data should be provided in register s5.
-                    ; After writing there is a delay >40us to allow time for the LCD process the data.
-                    ;
-                    ; Registers used s0,s1,s4,s5
-                    ;
-    LCD_write_data: OUTPUT s5, LCD_output_port          ;data output
-                    LOAD s4, 04                         ;RS=1 Data, RW=0 Write, E=0
-                    OUTPUT s4, LCD_control_port
-                    CALL LCD_pulse_E
-                    CALL delay_40us                     ;wait >40us
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ;
-                    ; Read 8-bit data from LCD display.
-                    ;
-                    ; The 8-bit data will be read from the current LCD memory address
-                    ; and will be returned in register s5.
-                    ; It is advisable to set the LCD address (cursor position) before
-                    ; using the data read for the first time otherwise the display may
-                    ; generate invalid data on the first read.
-                    ;
-                    ; A delay of >40us is required after each read
-                    ;
-                    ; Registers used s0,s1,s4,s5
-                    ;
-     LCD_read_data: LOAD s4, 06                         ;RS=1 Data, RW=1 Read, E=0
-                    OUTPUT s4, LCD_control_port         ;set up RS and RW >40ns before enable pulse
-                    XOR s4, LCD_E                       ;E=1
-                    OUTPUT s4, LCD_control_port
-                    CALL delay_1us                      ;wait >260ns to access data
-                    INPUT s5, LCD_input_port            ;read data
-                    XOR s4, LCD_E                       ;E=0
-                    OUTPUT s4, LCD_control_port
-                    LOAD s4, 04                         ;RS=1 Data, RW=0 Write, E=0
-                    OUTPUT s4, LCD_control_port         ;Stop reading 5V device
-                    CALL delay_40us                     ;wait >40us
-                    RETURN
-                    ;
-                    ;
-                    ; Pulse LCD enable signal 'E' high for greater than 230ns (1us is used).
-                    ;
-                    ; Register s4 should define the current state of the LCD control port.
-                    ;
-                    ; Registers used s0, s4
-                    ;
-       LCD_pulse_E: XOR s4, LCD_E                       ;E=1
-                    OUTPUT s4, LCD_control_port
-                    CALL delay_1us
-                    XOR s4, LCD_E                       ;E=0
-                    OUTPUT s4, LCD_control_port
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ; Reset and initialise display to communicate using 8-bit data mode
-                    ; Includes routine to clear the display.
-                    ;
-                    ; Requires the 8-bit instructions 38,38,38,28 to be sent with suitable delays
-                    ; following by the 8-bit instructions to set up the display.
-                    ;
-                    ;  38 = '001' Function set, '1' 4-bit mode, '1' 2-line, '0' 5x7 dot matrix, 'xx'
-                    ;  06 = '000001' Entry mode, '1' increment, '0' no display shift
-                    ;  0C = '00001' Display control, '1' display on, '0' cursor off, '0' cursor blink off
-                    ;  01 = '00000001' Display clear
-                    ;
-                    ; Registers used s0, s1, s2, s3, s4
-                    ;
-         LCD_reset: CALL delay_20ms                     ;wait more that 15ms for display to be ready
-                    LOAD s5, 38                         ;Function set
-                    CALL LCD_write_inst                 ;write '38'
-                    CALL delay_20ms                     ;wait >4.1ms
-                    CALL LCD_write_inst                 ;write '38'
-                    CALL delay_1ms                      ;wait >100us
-                    CALL LCD_write_inst                 ;write '38' and wait >40us
-                    CALL LCD_write_inst                 ;write 'Function Set' and wait >40us
-                    LOAD s5, 06                         ;Entry mode
-                    CALL LCD_write_inst                 ;write 'Entry mode' and wait >40us
-                    LOAD s5, 0C                         ;Display control
-                    CALL LCD_write_inst                 ;write 'Display control' and wait >40us
-         LCD_clear: LOAD s5, 01                         ;Display clear
-                    CALL LCD_write_inst
-                    CALL delay_1ms                      ;wait >1.64ms for display to clear
-                    CALL delay_1ms
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ;
-                    ; Position the cursor ready for characters to be written.
-                    ; The display is formed of 2 lines of 16 characters and each
-                    ; position has a corresponding address as indicated below.
-                    ;
-                    ;                   Character position
-                    ;           0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
-                    ;
-                    ; Line 1 - 80 81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F
-                    ; Line 2 - C0 C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB CC CD CE CF
-                    ;
-                    ; This routine will set the cursor position using the value provided
-                    ; in register s5. The upper nibble will define the line and the lower
-                    ; nibble the character position on the line.
-                    ; Example s5 = 2B will position the cursor on line 2 position 11
-                    ;
-                    ; Registers used s0, s1, s2, s3, s4
-                    ;
-        LCD_cursor: TEST s5, 10                         ;test for line 1
-                    JUMP Z, set_line2
-                    AND s5, 0F                          ;make address in range 80 to 8F for line 1
-                    OR s5, 80
-                    CALL LCD_write_inst                 ;instruction write to set cursor
-                    RETURN
-         set_line2: AND s5, 0F                          ;make address in range C0 to CF for line 2
-                    OR s5, C0
-                    CALL LCD_write_inst                 ;instruction write to set cursor
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ;
-                    ; This routine will shift the complete display one position to the left.
-                    ; The cursor position and LCD memory contents will not change.
-                    ;
-                    ;
-                    ; Registers used s0, s1, s2, s3, s4, s5
-                    ;
-    LCD_shift_left: LOAD s5, 18                         ;shift display left
-                    CALL LCD_write_inst
-                    RETURN
-                    ;
-                    ;
-                    ;
-                    ;**************************************************************************************
                     ; Interrupt Service Routine (ISR)
                     ;**************************************************************************************
                     ;
@@ -589,29 +292,29 @@ disp_line2:         LOAD s5, character_t
                     FETCH s3, ISR_preserve_s3           ;back to register
                     RETURNI ENABLE
    
-        LED_OUTPUT: COMPARE s2, 80                      ;sum >= 1000_0000
+        LED_OUTPUT: COMPARE s1, 80                      ;sum >= 1000_0000
                     JUMP NC, LED9_2
 
-                    COMPARE s2, 40                      ;sum >= 0100_0000
+                    COMPARE s1, 40                      ;sum >= 0100_0000
                     JUMP NC, LED9_3
 
-                    COMPARE s2, 20                      ;sum >= 0010_0000
+                    COMPARE s1, 20                      ;sum >= 0010_0000
                     JUMP NC, LED9_4
 
-                    COMPARE s2, 10                      ;sum >= 0001_0000
+                    COMPARE s1, 10                      ;sum >= 0001_0000
                     JUMP NC, LED9_5
 
-                    COMPARE s2, 08                      ;sum >= 0000_1000
+                    COMPARE s1, 08                      ;sum >= 0000_1000
                     JUMP NC, LED9_6
 
-                    COMPARE s2, 04                      ;sum >= 0000_0100
+                    COMPARE s1, 04                      ;sum >= 0000_0100
                     JUMP NC, LED9_7
 
-                    COMPARE s2, 02                      ;sum >= 0000_0010
+                    COMPARE s1, 02                      ;sum >= 0000_0010
                     JUMP NC, LED9_8
                     JUMP LED9_9
 
-          LED_END:  OUTPUT s2, LED_port                    
+          LED_END:  OUTPUT s1, LED_port                    
                     LOAD s1, 00
                     LOAD s2, 00
                     LOAD s3, 00
@@ -627,28 +330,28 @@ disp_line2:         LOAD s5, character_t
                     RETURNI ENABLE
           
           ;assign led pattern in the following code
-          LED9_2:   LOAD s2, ff
+          LED9_2:   LOAD s1, ff
                     JUMP LED_END
 
-          LED9_3:   LOAD s2, fe
+          LED9_3:   LOAD s1, fe
                     JUMP LED_END
         
-          LED9_4:   LOAD s2, fc
+          LED9_4:   LOAD s1, fc
                     JUMP LED_END
 
-          LED9_5:   LOAD s2, f8
+          LED9_5:   LOAD s1, f8
                     JUMP LED_END
 
-          LED9_6:   LOAD s2, f0
+          LED9_6:   LOAD s1, f0
                     JUMP LED_END
 
-          LED9_7:   LOAD s2, e0
+          LED9_7:   LOAD s1, e0
                     JUMP LED_END
           
-          LED9_8:   LOAD s2, c0
+          LED9_8:   LOAD s1, c0
                     JUMP LED_END
         
-          LED9_9:   LOAD s2, 80
+          LED9_9:   LOAD s1, 80
                     JUMP LED_END
 
                     ;
