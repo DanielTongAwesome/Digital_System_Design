@@ -358,9 +358,9 @@ picoblaze_template
 picoblaze_template_inst(
                       .led(LED[9:2]),
 							 .led0(LED[0]),
-                      .clk(CLK_25M),
+                      .clk(CLK_50M),
                       .input_data(audio_data),
-							 .interrupt(interrupt_wire));
+							 .interrupt_flag(interrupt_wire));
 
 //======================================================================================
 // 

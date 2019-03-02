@@ -10,7 +10,7 @@ parameter clk_freq_in_hz = 25000000
 				output reg led0,
 				input clk,
 				input [7:0] input_data,
-				input interrupt
+				input interrupt_flag
 	);
 
 
@@ -28,7 +28,7 @@ wire[7:0]  out_port;
 reg[7:0]  in_port;
 wire  write_strobe;
 wire  read_strobe;
-//reg  interrupt;
+reg  interrupt;
 wire  interrupt_ack;
 wire  kcpsm3_reset;
 
@@ -82,6 +82,7 @@ pacoblaze3 led_8seg_kcpsm
 
 // Note that because we are using clock enable we DO NOT need to synchronize with clk
 
+	/*
   always @ (posedge clk)
   begin
       //--divide 50MHz by 50,000,000 to form 1Hz pulses
@@ -96,20 +97,23 @@ pacoblaze3 led_8seg_kcpsm
       end
  end
 
- /*
- always @ (posedge clk or posedge interrupt_ack)  //FF with clock "clk" and reset "interrupt_ack"
+*/
+
+ 
+ 
+ always @ (posedge clk)  //FF with clock "clk" and reset "interrupt_ack"
  begin
       if (interrupt_ack) //if we get reset, reset interrupt in order to wait for next clock.
             interrupt <= 0;
-      else
-		begin 
-		      if (event_1hz)   //clock enable
-      		      interrupt <= 1;
-          		else
-		            interrupt <= interrupt;
-      end
+      else begin
+			if (interrupt_flag)
+		      interrupt <= 1;
+			else
+				interrupt <= 0;
+		end
  end
-*/
+
+
 //  --
 //  ----------------------------------------------------------------------------------------------------------------------------------
 //  -- KCPSM3 input ports 
@@ -140,8 +144,10 @@ end
   begin
 
         //LED is port 80 hex 
-        if (write_strobe & port_id[7])  //clock enable 
-          led <= out_port;
+			if (write_strobe & port_id[7]) begin  //clock enable 
+				led <= out_port;
+				//led <= 8'b1111_1111;
+			end
 			 //led <= 8'b1111_1111;
   end
 
