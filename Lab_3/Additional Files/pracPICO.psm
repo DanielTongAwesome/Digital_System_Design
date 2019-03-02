@@ -155,7 +155,7 @@
 					STORE s0, ACCUMULATE_LOW
 					STORE s0, ACCUMULATE_HIGH			  ;set the vlue for these three registers to be 00
                     OUTPUT s0, LED_port
-					OUTPUT s0, LED_0	
+					OUTPUT s0, led0	
                     ;
                     ENABLE INTERRUPT                    ;enable one second heart beat
                     ;
