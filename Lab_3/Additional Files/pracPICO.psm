@@ -36,7 +36,7 @@
                     CONSTANT ISR_preserve_s3, 03        ;Preserve s3 contents during ISR
                     ;
     
-                    CONSTANT ACCUMULATE_LOW, 05
+                    CONSTANT ACCUMULATE_LOW, 04
                     CONSTANT ACCUMULATE_HIGH, 06
                     CONSTANT COUNTER, 07
                     ;
@@ -151,9 +151,9 @@
                     ;**************************************************************************************
                     ;
         cold_start: LOAD s0, 00                         ;clear 1 second counter and clear LEDs
-                    STORE s0, counter
-					STORE s0, stored_data
-					STORE s0, carry_stored_data			  ;set the vlue for these three registers to be 00
+                    STORE s0, COUNTER
+					STORE s0, ACCUMULATE_LOW
+					STORE s0, ACCUMULATE_HIGH			  ;set the vlue for these three registers to be 00
                     OUTPUT s0, LED_port
 					OUTPUT s0, LED_0	
                     ;
