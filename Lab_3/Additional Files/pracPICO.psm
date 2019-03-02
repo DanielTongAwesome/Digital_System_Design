@@ -17,29 +17,7 @@
 			        CONSTANT DATA_IN_PORT, 00	        ;input data port. this is an INPUT port.
                     CONSTANT led0, 40
                  
-                    ;
-                    ;
-                    ;
-                    ; LCD interface ports
-                    ;
-                    ; The 8-bit communication interface can be used on the Spartan-3A Starter Kit
-                    ; as all pins are connected and dedicated.
-                    ;
-                    CONSTANT LCD_output_port, 40        ;LCD character module output data
-                    CONSTANT LCD_input_port, 01         ;LCD character module input data
-                    CONSTANT LCD_DB0, 01                ;   8-bit          DB4 - bit0
-                    CONSTANT LCD_DB1, 02                ;   interface      DB5 - bit1
-                    CONSTANT LCD_DB2, 04                ;                  DB6 - bit2
-                    CONSTANT LCD_DB3, 08                ;                  DB7 - bit3
-                    CONSTANT LCD_DB4, 10                ;                  DB4 - bit4
-                    CONSTANT LCD_DB5, 20                ;                  DB5 - bit5
-                    CONSTANT LCD_DB6, 40                ;                  DB6 - bit6
-                    CONSTANT LCD_DB7, 80                ;                  DB7 - bit7
-                    ;
-                    CONSTANT LCD_control_port, 20       ;LCD character module control signals
-                    CONSTANT LCD_E, 01                  ;   active High Enable        E - bit0
-                    CONSTANT LCD_RW, 02                 ;   Read=1 Write=0           RW - bit1
-                    CONSTANT LCD_RS, 04                 ;   Instruction=0 Data=1     RS - bit2
+                   
                    
                     ;**************************************************************************************
                     ; Special Register usage
@@ -57,8 +35,7 @@
                     CONSTANT ISR_preserve_s2, 02        ;Preserve s2 contents during ISR
                     CONSTANT ISR_preserve_s3, 03        ;Preserve s3 contents during ISR
                     ;
-                    CONSTANT LED_pattern, 04            ;remember state of LEDs (8-bit counter in this case)
-
+    
                     CONSTANT ACCUMULATE_LOW, 05
                     CONSTANT ACCUMULATE_HIGH, 06
                     CONSTANT COUNTER, 07
@@ -174,12 +151,14 @@
                     ;**************************************************************************************
                     ;
         cold_start: LOAD s0, 00                         ;clear 1 second counter and clear LEDs
-                    STORE s0, LED_pattern
+                    STORE s0, counter
+					STORE s0, stored_data
+					STORE s0, carry_stored_data			  ;set the vlue for these three registers to be 00
                     OUTPUT s0, LED_port
+					OUTPUT s0, LED_0	
                     ;
                     ENABLE INTERRUPT                    ;enable one second heart beat
                     ;
-                    CALL LCD_reset                      ;initialise LCD display
                     ;
                     ;**************************************************************************************
                     ; Main program
@@ -188,16 +167,13 @@
                     ; Display welcome message for design
                     ;
 
-      main_program: load s5, 01                         ;Line 1 position 0
-                    output s5, led0;
-                    call delay_1s;
-
-                    load s5, 00;
-                    output s5, led0;
-                    call delay_1s;
-
-                    jump main_program;
-
+      main_program: LOAD s1, 01											;light up LED[0]
+					OUTPUT s1, led0
+                    CALL delay_1s
+                    LOAD s1, 00											;turn off LED[0]
+					OUTPUT s1, led0
+					CALL delay_1s
+					JUMP main_program
                  
 
 			        ;
@@ -613,28 +589,29 @@ disp_line2:         LOAD s5, character_t
                     FETCH s3, ISR_preserve_s3           ;back to register
                     RETURNI ENABLE
    
-        LED_OUTPUT: COMPARE s3, 80                      ;sum >= 1000_0000
+        LED_OUTPUT: COMPARE s2, 80                      ;sum >= 1000_0000
                     JUMP NC, LED9_2
 
-                    COMPARE s3, 40                      ;sum >= 0100_0000
+                    COMPARE s2, 40                      ;sum >= 0100_0000
                     JUMP NC, LED9_3
 
-                    COMPARE s3, 20                      ;sum >= 0010_0000
+                    COMPARE s2, 20                      ;sum >= 0010_0000
                     JUMP NC, LED9_4
 
-                    COMPARE s3, 10                      ;sum >= 0001_0000
+                    COMPARE s2, 10                      ;sum >= 0001_0000
                     JUMP NC, LED9_5
 
-                    COMPARE s3, 08                      ;sum >= 0000_1000
+                    COMPARE s2, 08                      ;sum >= 0000_1000
                     JUMP NC, LED9_6
 
-                    COMPARE s3, 04                      ;sum >= 0000_0100
+                    COMPARE s2, 04                      ;sum >= 0000_0100
                     JUMP NC, LED9_7
 
-                    COMPARE s3, 02                      ;sum >= 0000_0010
+                    COMPARE s2, 02                      ;sum >= 0000_0010
                     JUMP NC, LED9_8
+                    JUMP LED9_9
 
-          LED_END:  OUTPUT s1, LED_port                    
+          LED_END:  OUTPUT s2, LED_port                    
                     LOAD s1, 00
                     LOAD s2, 00
                     LOAD s3, 00
@@ -650,28 +627,28 @@ disp_line2:         LOAD s5, character_t
                     RETURNI ENABLE
           
           ;assign led pattern in the following code
-          LED9_2:   LOAD s3, FF
+          LED9_2:   LOAD s2, ff
                     JUMP LED_END
 
-          LED9_3:   LOAD s3, FE
+          LED9_3:   LOAD s2, fe
                     JUMP LED_END
         
-          LED9_4:   LOAD s3, FC
+          LED9_4:   LOAD s2, fc
                     JUMP LED_END
 
-          LED9_5:   LOAD s3, F8
+          LED9_5:   LOAD s2, f8
                     JUMP LED_END
 
-          LED9_6:   LOAD s3, F0
+          LED9_6:   LOAD s2, f0
                     JUMP LED_END
 
-          LED9_7:   LOAD s3, E0
+          LED9_7:   LOAD s2, e0
                     JUMP LED_END
           
-          LED9_8:   LOAD s3, C0
+          LED9_8:   LOAD s2, c0
                     JUMP LED_END
         
-          LED9_9:   LOAD s3, 80
+          LED9_9:   LOAD s2, 80
                     JUMP LED_END
 
                     ;
