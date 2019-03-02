@@ -286,29 +286,29 @@
                     FETCH s3, ISR_preserve_s3           ;back to register
                     RETURNI ENABLE
    
-        LED_OUTPUT: COMPARE s1, 80                      ;sum >= 1000_0000
+        LED_OUTPUT: COMPARE s2, 80                      ;sum >= 1000_0000
                     JUMP NC, LED9_2
 
-                    COMPARE s1, 40                      ;sum >= 0100_0000
+                    COMPARE s2, 40                      ;sum >= 0100_0000
                     JUMP NC, LED9_3
 
-                    COMPARE s1, 20                      ;sum >= 0010_0000
+                    COMPARE s2, 20                      ;sum >= 0010_0000
                     JUMP NC, LED9_4
 
-                    COMPARE s1, 10                      ;sum >= 0001_0000
+                    COMPARE s2, 10                      ;sum >= 0001_0000
                     JUMP NC, LED9_5
 
-                    COMPARE s1, 08                      ;sum >= 0000_1000
+                    COMPARE s2, 08                      ;sum >= 0000_1000
                     JUMP NC, LED9_6
 
-                    COMPARE s1, 04                      ;sum >= 0000_0100
+                    COMPARE s2, 04                      ;sum >= 0000_0100
                     JUMP NC, LED9_7
 
-                    COMPARE s1, 02                      ;sum >= 0000_0010
+                    COMPARE s2, 02                      ;sum >= 0000_0010
                     JUMP NC, LED9_8
                     JUMP LED9_9
 
-          LED_END:  OUTPUT s1, LED_port                    
+          LED_END:  OUTPUT s2, LED_port                    
                     LOAD s1, 00
                     LOAD s2, 00
                     LOAD s3, 00
@@ -324,28 +324,28 @@
                     RETURNI ENABLE
           
           ;assign led pattern in the following code
-          LED9_2:   LOAD s1, ff
+          LED9_2:   LOAD s2, ff
                     JUMP LED_END
 
-          LED9_3:   LOAD s1, fe
+          LED9_3:   LOAD s2, fe
                     JUMP LED_END
         
-          LED9_4:   LOAD s1, fc
+          LED9_4:   LOAD s2, fc
                     JUMP LED_END
 
-          LED9_5:   LOAD s1, f8
+          LED9_5:   LOAD s2, f8
                     JUMP LED_END
 
-          LED9_6:   LOAD s1, f0
+          LED9_6:   LOAD s2, f0
                     JUMP LED_END
 
-          LED9_7:   LOAD s1, e0
+          LED9_7:   LOAD s2, e0
                     JUMP LED_END
           
-          LED9_8:   LOAD s1, c0
+          LED9_8:   LOAD s2, c0
                     JUMP LED_END
         
-          LED9_9:   LOAD s1, 80
+          LED9_9:   LOAD s2, 80
                     JUMP LED_END
                     
     ; take absolute value
