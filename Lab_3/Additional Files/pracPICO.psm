@@ -251,8 +251,7 @@
                     ; The following code flash the led and shift each second
                     ;
 
-               ISR: ; read from the preserved registers
-                    STORE s0, ISR_preserve_s0           ;preserve register
+               ISR: STORE s0, ISR_preserve_s0           ;preserve register
                     STORE s1, ISR_preserve_s1           ;preserve register
                     STORE s2, ISR_preserve_s2           ;preserve register
                     STORE s3, ISR_preserve_s3           ;preserve register
@@ -265,21 +264,16 @@
                     FETCH s2, ACCUMULATE_HIGH
                     FETCH s3, COUNTER
 
-                    TEST s0, 80               ; test s0 is negative or not
-                    CALL C, TAKE_ABS_DATA     ; if it is negative 
-                    CALL NC, ADD_SIGNAL_VALUE ; if it is positive
-
-    ; take absolute value
-    TAKE_ABS_DATA:  SUB s0, 01
-                    XOR s0, FF				;take complement
-                    JUMP ADD_SIGNAL_VALUE
+                    COMPARE s0, 80               ; test s0 is negative or not
+                    JUMP NC, TAKE_ABS_DATA     ; if it is negative 
 
  ADD_SIGNAL_VALUE:  ADD s1, s0
                     ADDCY s2, 00 
                     ADD s3, 01
 
                     ; if overflow go to output
-                    JUMP C, LED_OUTPUT
+                    COMPARE s3, 00
+                    JUMP Z, LED_OUTPUT
 
                     ; else store 
                     STORE s1, ACCUMULATE_LOW            ;store variable
@@ -353,7 +347,11 @@
         
           LED9_9:   LOAD s1, 80
                     JUMP LED_END
-
+                    
+    ; take absolute value
+    TAKE_ABS_DATA:  SUB s0, 01
+                    XOR s0, FF				;take complement
+                    JUMP ADD_SIGNAL_VALUE
                     ;
                     ;
                     ;**************************************************************************************
