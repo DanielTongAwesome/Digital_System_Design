@@ -17,7 +17,7 @@
 				    output	wire [6:0]	HEX2,
 				    output	wire [6:0]	HEX3,
 				    output	wire [6:0]	HEX4,
-				    output	wire [6:0]	HEX5))
+				    output	wire [6:0]	HEX5);
 
     logic clk = CLOCK_50;
 	logic reset = ~KEY[3];
