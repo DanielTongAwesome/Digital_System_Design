@@ -18,7 +18,7 @@ module s_memory_init(   input clk,
                         output finish);
     
     // counter - count address and output data
-    logic counter 
+    logic [7:0] counter;
 
     // state define
     typedef enum logic [1:0] {  
@@ -36,21 +36,21 @@ module s_memory_init(   input clk,
 
     // state transaction
     always @(posedge clk) begin
-        if (reset):
+        if (reset)
             state <= IDLE;
         else
             case(state)
                 // STATE - IDLE 
-                IDLE:   if (start): state <= START;
+                IDLE:   if (start) state <= START;
                         else state <= IDLE;
                 
                 // STATE - START
-                START:  if (counter == 8'd255) begin
+                START:  if (counter == 8'hff) begin
                             state <= FINISH;
                             counter <= 8'b0;
                         end
                         else begin
-                            counter = counter + 1'b1; 
+                            counter = counter + 8'b1; 
                         end
                 
                 // STATE - FINISH

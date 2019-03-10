@@ -19,9 +19,9 @@
 				    output	wire [6:0]	HEX4,
 				    output	wire [6:0]	HEX5);
 
-    logic clk = CLOCK_50;
-	logic reset = ~KEY[3];
-	logic start = ~KEY[0];
+   wire clk = CLOCK_50;
+	wire reset = ~KEY[3];
+	wire start = ~KEY[0];
 
 	//memory relevant logic wire
 	logic [7:0] s_memory_address, s_memory_data, s_memory_q;
