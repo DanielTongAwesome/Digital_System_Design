@@ -35,8 +35,8 @@ module s_memory_shuffle(    input clk,
     // define state
     typedef enum logic [9:0] { 
         //                    9 8 7 6 5 4 3 2 1 0
-        IDLE            = 10'b0_0_0_0_0_0_0_0_0_0,
-    
+        IDLE            = 10'b0_0_1_0_0_0_0_0_0_0,  
+		  // assign address_select  1 with no purpose, but to make IDLE and next state have different state-bit
         SET_I_ADDRESS   = 10'b0_0_0_0_0_0_0_0_0_0,
         READ_SI         = 10'b0_0_0_0_0_1_0_0_0_0,  // si_en
         COMPUTE_J       = 10'b0_0_0_0_0_0_1_0_0_0,  // j_en 
@@ -121,7 +121,7 @@ module s_memory_shuffle(    input clk,
             j <= 1'b0;
         end
         else if (j_en) begin
-            j <= j + si + secret_key_mod_result  // according to the instruction formula
+            j <= j + si + secret_key_mod_result;  // according to the instruction formula
         end
     end
 
@@ -138,7 +138,7 @@ module s_memory_shuffle(    input clk,
     // secret_key_mode_result
     always_comb begin
         // 3 conditions of mod 3 -- 0,1,2
-        case (i % 8'd3):
+        case (i % 8'd3)
             8'd0: secret_key_mod_result = secret_key[23:16];
             8'd1: secret_key_mod_result = secret_key[15: 8];
             8'd2: secret_key_mod_result = secret_key[ 7: 0];

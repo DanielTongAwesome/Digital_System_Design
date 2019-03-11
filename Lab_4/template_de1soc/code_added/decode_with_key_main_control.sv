@@ -18,7 +18,7 @@ typedef enum logic [4:0] {
     WAIT_INIT       = 5'b011_00,
     // shuffle
     START_SHUFFLE   = 5'b010_10,    // start shuffle
-    WAIT_SHUFFLE    = 5'b100_00,
+    WAIT_SHUFFLE    = 5'b100_00
 
 }stateType;
 stateType state = IDLE; // default

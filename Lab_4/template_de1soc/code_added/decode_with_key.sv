@@ -29,8 +29,8 @@ module decode_with_key( input clk,
     
 
     // main control logic wire
-    logic init_start, init_finish // init
-    logic shuffle_start, shuffle_finish // shuffle
+    logic init_start, init_finish; // init
+    logic shuffle_start, shuffle_finish; // shuffle
 
 
     // decode_with_key_main module -- control the workflow of the decode procedure
