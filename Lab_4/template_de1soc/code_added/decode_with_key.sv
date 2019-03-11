@@ -52,10 +52,10 @@ module decode_with_key( input clk,
 						.reset			(reset),
 						.start			(init_start),
                         // output
-						.written_address(s_memory_address),
-						.data			(s_memory_data),
-						.written_enable	(s_memory_written_enable),
-						.finish			(init_finish));
+						.written_address(init_address_output),
+						.data			(init_data_output),
+						.written_enable	(init_write_enable_output),
+						.finish			(init_finish)); // send finished to main control
     
     // s_memory_shuffle module
     s_memory_shuffle        // input
@@ -63,12 +63,33 @@ module decode_with_key( input clk,
                             .start          (shuffle_start),
                             .reset          (reset),
                             .secret_key     (secret_key),
-                            .q              (s_memory_q),
+                            .q              (s_memory_q),   // acquire directly from s_memory
                             // output
-                            .address        (s_memory_address),
-                            .data           (s_memory_data),
-                            .write_enable   (s_memory_written_enable),
-                            .finish         (shuffle_finish));
+                            .address        (shuffle_address_output),
+                            .data           (shuffle_data_output),
+                            .write_enable   (shuffle_write_enable_output),
+                            .finish         (shuffle_finish));  // send finished to main control
 	
+
+    // logic wire for share memeory access
+    logic init_address_output, init_data_output, init_write_enable_output; // for init
+    logic shuffle_address_output, shuffle_data_output, shuffle_write_enable_output; // for shuffle
+
+    // share_access_to_s_memory module
+                                // input -- init
+    share_access_to_s_memory(   .init_address           (init_address_output),
+                                .init_data              (init_data_output),
+                                .init_write_enable      (init_write_enable_output),
+                                // input -- shuffle
+                                .shuffle_address        (shuffle_address_output),
+                                .shuffle_data           (shuffle_data_output),
+                                .shuffle_write_enable   (shuffle_write_enable_output),
+                                // start control signal -- used it to check which should control the machine
+                                .start_init             (init_start),
+                                .start_shuffle          (shuffle_start),
+                                // output 
+                                .output_address         (s_memory_address),
+                                .output_data            (s_memory_data),
+                                .output_write_enable    (s_memory_written_enable));
 
 endmodule
