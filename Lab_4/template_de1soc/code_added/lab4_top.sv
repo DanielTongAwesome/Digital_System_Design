@@ -19,28 +19,17 @@
 				    output	wire [6:0]	HEX4,
 				    output	wire [6:0]	HEX5);
 
-   wire clk = CLOCK_50;
+	// internal wire
+   	wire clk = CLOCK_50;
 	wire reset = ~KEY[3];
-	wire start = ~KEY[0];
+	wire decode_start = ~KEY[0];
 
-	//memory relevant logic wire
-	logic [7:0] s_memory_address, s_memory_data, s_memory_q;
-	logic s_memory_written_enable;
-	logic s_memory_init_finish;
-	s_memory
-	s_memory_inst(	.address(s_memory_address),
-					.clock	(clk),
-					.data	(s_memory_data),
-					.wren	(s_memory_written_enable),
-					.q		(s_memory_q));
-	
-	s_memory_init
-	s_memory_init_inst(	.clk			(clk),
-						.reset			(1'b0),
-						.start			(start),
-						.written_address(s_memory_address),
-						.data			(s_memory_data),
-						.written_enable	(s_memory_written_enable),
-						.finish			(s_memory_init_finish));
+	// lab1 and lab2 module here
+	decode_with_key
+	decode_with_key_inst(	.clk		(clk),
+							.reset		(reset),
+							.start		(start),
+							.secret_key	({14'b0, SW}));
+
 
  endmodule

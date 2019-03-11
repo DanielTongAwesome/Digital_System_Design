@@ -34,7 +34,7 @@ module s_memory_init(   input clk,
     assign written_enable = state[1];
     assign finish = state[0];
 
-    // state transaction
+    // state transition logic
     always @(posedge clk) begin
         if (reset)
             state <= IDLE;
