@@ -41,7 +41,7 @@ always @(posedge clk) begin
 
             // init memory
             START_INIT: state <= WAIT_INIT;
-            WAIT_INIT:  if (init_finish) state <= IDLE;
+            WAIT_INIT:  if (init_finish) state <= START_SHUFFLE;
 
             // shuffle stage
             START_SHUFFLE: state <= WAIT_SHUFFLE;

@@ -74,8 +74,10 @@ module decode_with_key( input clk,
 	
 
     // logic wire for share memeory access
-    logic init_address_output, init_data_output, init_write_enable_output; // for init
-    logic shuffle_address_output, shuffle_data_output, shuffle_write_enable_output; // for shuffle
+    logic [7:0] init_address_output, init_data_output;
+	 logic init_write_enable_output; // for init
+    logic [7:0] shuffle_address_output, shuffle_data_output;
+	 logic shuffle_write_enable_output; // for shuffle
 
     // share_access_to_s_memory module
                                 // input -- init
