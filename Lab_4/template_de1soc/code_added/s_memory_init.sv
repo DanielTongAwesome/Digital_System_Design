@@ -12,10 +12,10 @@ module s_memory_init(   input clk,
                         input reset,
                         input start,
                         // output
-                        output [7:0] written_address,
-                        output [7:0] data,
-                        output written_enable,
-                        output finish);
+                        output wire [7:0] written_address,
+                        output wire [7:0] data,
+                        output wire written_enable,
+                        output wire finish);
     
     // counter - count address and output data
     logic [7:0] counter;
@@ -24,7 +24,7 @@ module s_memory_init(   input clk,
     typedef enum logic [1:0] {  
         IDLE    = 2'b0_0,
         START   = 2'b1_0,
-        FINISH  = 2'b1_1
+        FINISH  = 2'b0_1
     } stateType;    
     stateType state = IDLE;
 
@@ -50,7 +50,7 @@ module s_memory_init(   input clk,
                             counter <= 8'b0;
                         end
                         else begin
-                            counter = counter + 8'b1; 
+                            counter <= counter + 8'b1; 
                         end
                 
                 // STATE - FINISH

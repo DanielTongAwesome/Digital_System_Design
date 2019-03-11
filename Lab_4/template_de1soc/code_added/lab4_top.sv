@@ -28,7 +28,7 @@
 	decode_with_key
 	decode_with_key_inst(	.clk		(clk),
 							.reset		(reset),
-							.start		(start),
+							.start		(decode_start),
 							.secret_key	({14'b0, SW}));
 
 

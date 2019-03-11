@@ -118,7 +118,7 @@ module s_memory_shuffle(    input clk,
     // if j_en, that means start to calculate the j
     always_ff @(posedge clk) begin
         if (reset | j_reset) begin
-            j <= 1'b0;
+            j <= 8'b0;
         end
         else if (j_en) begin
             j <= j + si + secret_key_mod_result;  // according to the instruction formula
@@ -128,7 +128,7 @@ module s_memory_shuffle(    input clk,
     // if i_en, that means start to accumulate i + 1
     always_ff @(posedge clk) begin
         if (reset | i_reset) begin
-            i <= 1'b0;
+            i <= 8'b0;
         end
         else if (i_en) begin
             i <= i + 8'b1;

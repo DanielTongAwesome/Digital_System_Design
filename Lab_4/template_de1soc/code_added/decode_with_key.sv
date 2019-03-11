@@ -31,6 +31,7 @@ module decode_with_key( input clk,
     // main control logic wire
     logic init_start, init_finish; // init
     logic shuffle_start, shuffle_finish; // shuffle
+	 logic [1:0] select_share_wire;
 
 
     // decode_with_key_main module -- control the workflow of the decode procedure
@@ -43,7 +44,8 @@ module decode_with_key( input clk,
                                         .init_finish    (init_finish), // input
                                         // shuffle
                                         .start_shuffle  (shuffle_start), // output
-                                        .shuffle_finish (shuffle_finish)  // input
+                                        .shuffle_finish (shuffle_finish),  // input
+													 .select_share	  (select_share_wire)
                                         );
 
     // s_memory_init module
@@ -77,19 +79,19 @@ module decode_with_key( input clk,
 
     // share_access_to_s_memory module
                                 // input -- init
-    share_access_to_s_memory(   .init_address           (init_address_output),
-                                .init_data              (init_data_output),
-                                .init_write_enable      (init_write_enable_output),
-                                // input -- shuffle
-                                .shuffle_address        (shuffle_address_output),
-                                .shuffle_data           (shuffle_data_output),
-                                .shuffle_write_enable   (shuffle_write_enable_output),
-                                // start control signal -- used it to check which should control the machine
-                                .start_init             (init_start),
-                                .start_shuffle          (shuffle_start),
-                                // output 
-                                .output_address         (s_memory_address),
-                                .output_data            (s_memory_data),
-                                .output_write_enable    (s_memory_written_enable));
+    share_access_to_s_memory
+	 share_access_to_s_memory_inst(	.init_address           (init_address_output),
+												.init_data              (init_data_output),
+												.init_write_enable      (init_write_enable_output),
+												// input -- shuffle
+												.shuffle_address        (shuffle_address_output),
+												.shuffle_data           (shuffle_data_output),
+												.shuffle_write_enable   (shuffle_write_enable_output),
+												// select share
+												.select_share				(select_share_wire),
+												// output 
+												.output_address         (s_memory_address),
+												.output_data            (s_memory_data),
+												.output_write_enable    (s_memory_written_enable));
 
 endmodule
