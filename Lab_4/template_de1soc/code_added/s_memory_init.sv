@@ -22,9 +22,8 @@ module s_memory_init(   input clk,
 
     // state define
     typedef enum logic [1:0] {  
-        IDLE    = 2'b0_0,
-        START   = 2'b1_0,
-        FINISH  = 2'b0_1
+        IDLE    = 2'b0_1,
+        START   = 2'b1_0
     } stateType;    
     stateType state = IDLE;
 
@@ -46,15 +45,13 @@ module s_memory_init(   input clk,
                 
                 // STATE - START
                 START:  if (counter == 8'hff) begin
-                            state <= FINISH;
+                            state <= IDLE;
                             counter <= 8'b0;
                         end
                         else begin
                             counter <= counter + 8'b1; 
                         end
-                
-                // STATE - FINISH
-                FINISH: state <= IDLE;
+             
                 
                 default: state <= IDLE;
             endcase

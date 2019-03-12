@@ -20,13 +20,13 @@ module decode_with_key( input clk,
 
 
 	// s_memory moudle -- the memory module, that we should perform interaction with it
-	s_memory
-	s_memory_inst(	.address(s_memory_address),
-					.clock	(clk),
-					.data	(s_memory_data),
-					.wren	(s_memory_written_enable),
-					.q		(s_memory_q));
-    
+	Working_Memory_RAM
+	Working_Memory_RAM_inst(	.address(s_memory_address),
+										.clock	(clk),
+										.data	(s_memory_data),
+										.wren	(s_memory_written_enable),
+										.q		(s_memory_q));
+						 
 
     // main control logic wire
     logic init_start, init_finish; // init
