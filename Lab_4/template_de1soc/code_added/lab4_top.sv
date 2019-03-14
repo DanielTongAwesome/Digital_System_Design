@@ -23,13 +23,18 @@
    	wire clk = CLOCK_50;
 	wire reset = ~KEY[3];
 	wire decode_start = ~KEY[0];
-
+	
+	// switch LED indicator
+	assign LEDR = SW;
+	
+	
 	// lab1 and lab2 module here
 	decode_with_key
 	decode_with_key_inst(	.clk		(clk),
 							.reset		(reset),
 							.start		(decode_start),
 							.secret_key	({14'b0, SW}));
-
+	
+	
 
  endmodule
