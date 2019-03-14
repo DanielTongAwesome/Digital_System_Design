@@ -18,21 +18,38 @@ module decode_with_key( input clk,
 	logic [7:0] s_memory_address, s_memory_data, s_memory_q;
 	logic s_memory_written_enable;
 
+     // main control logic wire
+    logic init_start, init_finish; // init
+    logic shuffle_start, shuffle_finish; // shuffle
+    logic decode_start, decode_finish; //decode
+	logic [1:0] select_share_wire;
+
+    // share memeory access logic wire 
+    logic [7:0] init_address_output, init_data_output;
+	logic init_write_enable_output; // for init
+    logic [7:0] shuffle_address_output, shuffle_data_output;
+	logic shuffle_write_enable_output; // for shuffle
+    logic [7:0] decode_address_output, decode_data_output;
+	logic decode_write_enable_output; // for decode
+
+     // Encryp Message ROM logic wire
+    logic [7:0] Encryp_address, Encryp_q;
+
+    // Decryp Message RAM logic wire
+    logic [7:0] Decryp_address, Decryp_data, Decryp_q;
+    logic Decryp_wren;
+
 
 	// s_memory moudle -- the memory module, that we should perform interaction with it
 	Working_Memory_RAM
 	Working_Memory_RAM_inst(	.address(s_memory_address),
-										.clock	(clk),
-										.data	(s_memory_data),
-										.wren	(s_memory_written_enable),
-										.q		(s_memory_q));
+								.clock	(clk),
+								.data	(s_memory_data),
+								.wren	(s_memory_written_enable),
+								.q		(s_memory_q));
 						 
 
-    // main control logic wire
-    logic init_start, init_finish; // init
-    logic shuffle_start, shuffle_finish; // shuffle
-	 logic [1:0] select_share_wire;
-
+   
 
     // decode_with_key_main module -- control the workflow of the decode procedure
     decode_with_key_main_control        // input
@@ -45,7 +62,12 @@ module decode_with_key( input clk,
                                         // shuffle
                                         .start_shuffle  (shuffle_start), // output
                                         .shuffle_finish (shuffle_finish),  // input
-													 .select_share	  (select_share_wire)
+
+                                        // decode
+                                        .start_decode   (decode_start), // output
+                                        .decode_finish  (decode_finish), // input
+
+										.select_share	  (select_share_wire)
                                         );
 
     // s_memory_init module
@@ -72,28 +94,59 @@ module decode_with_key( input clk,
                             .write_enable   (shuffle_write_enable_output),
                             .finish         (shuffle_finish));  // send finished to main control
 	
+    //decode using the given formula
+	decode	decode_inst(.clk	(clk),
+						.reset	(reset),
+						.start	(decode_start),
+				
+						.s_mem_addr	(decode_address_output),
+						.s_mem_data	(decode_data_output), 
+						.s_mem_wren	(decode_write_enable_output),
+						.s_mem_q	(s_memory_q),
+				
+						.encr_mem_addr	(Encryp_address),
+						.encr_mem_q		(Encryp_q),
+				
+						.decr_mem_addr	(Decryp_address), 
+						.decr_mem_data	(Decryp_data), 
+						.decr_mem_wren	(Decryp_wren),
+				
+						.finish	(decode_finish));
 
-    // logic wire for share memeory access
-    logic [7:0] init_address_output, init_data_output;
-	 logic init_write_enable_output; // for init
-    logic [7:0] shuffle_address_output, shuffle_data_output;
-	 logic shuffle_write_enable_output; // for shuffle
 
-    // share_access_to_s_memory module
-                                // input -- init
-    share_access_to_s_memory
-	 share_access_to_s_memory_inst(	.init_address           (init_address_output),
-												.init_data              (init_data_output),
-												.init_write_enable      (init_write_enable_output),
-												// input -- shuffle
-												.shuffle_address        (shuffle_address_output),
-												.shuffle_data           (shuffle_data_output),
-												.shuffle_write_enable   (shuffle_write_enable_output),
-												// select share
-												.select_share				(select_share_wire),
-												// output 
-												.output_address         (s_memory_address),
-												.output_data            (s_memory_data),
-												.output_write_enable    (s_memory_written_enable));
 
+    // share_access_to_s_memory module                          
+    share_access_to_s_memory        // input -- init
+	share_access_to_s_memory_inst(	.init_address           (init_address_output),
+									.init_data              (init_data_output),
+									.init_write_enable      (init_write_enable_output),
+									// input -- shuffle
+									.shuffle_address        (shuffle_address_output),
+									.shuffle_data           (shuffle_data_output),
+									.shuffle_write_enable   (shuffle_write_enable_output),
+									// input -- decode
+                                    .decode_address         (decode_address_output),
+                                    .decode_data            (decode_data_output),
+                                    .decode_write_enable    (decode_write_enable_output),
+                                    // select share
+									.select_share			(select_share_wire),
+									// output 
+									.output_address         (s_memory_address),
+									.output_data            (s_memory_data),
+									.output_write_enable    (s_memory_written_enable));
+   
+
+    // Encryp ROM
+    Encryp_Message_ROM
+    Encryp_Message_ROM_inst(    .address    (Encryp_address),
+                                .clock      (clk),
+                                .q          (Encryp_q));
+    
+    // Decryp RAM
+    Decryp_Message_RAM
+    Decryp_Message_RAM_inst(    .address    (Decryp_address),
+                                .clock      (clk),
+                                .data       (Decryp_data),
+                                .wren       (Decryp_wren),
+                                .q          (Decryp_q));
 endmodule

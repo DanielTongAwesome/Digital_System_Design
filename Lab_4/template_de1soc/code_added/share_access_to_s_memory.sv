@@ -15,6 +15,10 @@ module share_access_to_s_memory(    input [7:0] init_address,
 									input [7:0] shuffle_address, 
 									input [7:0] shuffle_data, 
 									input 		shuffle_write_enable,
+                                    // shuffle input
+									input [7:0] decode_address, 
+									input [7:0] decode_data, 
+									input 		decode_write_enable,
                                     // used to determine which one is the controlling the output
                                     input [1:0] select_share,
                                     // output
@@ -25,6 +29,7 @@ module share_access_to_s_memory(    input [7:0] init_address,
     // combinational logic state define
     parameter INIT    = 2'b01;
     parameter SHUFFLE = 2'b10;
+    parameter DECODE  = 2'b11;
     
 
     // combinational logic here for difference cases
@@ -42,6 +47,12 @@ module share_access_to_s_memory(    input [7:0] init_address,
                             output_data         = shuffle_data;
                             output_write_enable = shuffle_write_enable;
                         end
+            // decode is controlling
+            DECODE:    begin
+                            output_address      = decode_address;
+                            output_data         = decode_data;
+                            output_write_enable = decode_write_enable;
+                        end            
             // defalut everything to 0
             default:    begin 
                             output_address      = 8'b0;
