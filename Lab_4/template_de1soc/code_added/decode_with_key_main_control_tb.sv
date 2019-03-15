@@ -35,20 +35,23 @@ end
 initial begin
 		reset = 1;
 		start = 0;
+        init_finish = 0;
+        shuffle_finish = 0;
+        decode_finish = 0;
 		#10;
         start = 1;
 		reset = 0;
 		#30;
         init_finish = 1;
-        #10;
+        #20;
         init_finish = 0;
 		#20;
         shuffle_finish = 1;
-        #10;
+        #20;
         shuffle_finish = 0;
         #20;
         decode_finish = 1;
-        #10;
+        #20;
         decode_finish = 0;
         #30;
         #30;
