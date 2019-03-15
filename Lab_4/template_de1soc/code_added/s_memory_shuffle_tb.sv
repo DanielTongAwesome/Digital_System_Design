@@ -31,11 +31,11 @@ end
 // logic
 initial begin
 		reset = 1;
-		start = 1;
+		start = 0;
 		q = 8'd0;
 		secret_key = 24'h249;
 		#10;
-        start = 0;
+        	start = 1;
 		reset = 0;
 		#100;
 		#200;
