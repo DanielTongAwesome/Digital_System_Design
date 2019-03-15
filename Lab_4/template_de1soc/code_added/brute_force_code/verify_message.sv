@@ -19,9 +19,9 @@ module verify_message(  input clk,
 
     // logic
     logic address_enable, address_reset;
-
+	 logic core_found;
     // state define
-    typedef enum logic [4:0] { 
+    typedef enum logic [3:0] { 
         IDLE            = 4'b0_00_0,
         RESET           = 4'B1_10_0,
         WAIT_FOR_DATA   = 4'b1_00_0,
@@ -51,7 +51,7 @@ module verify_message(  input clk,
 
                 VERIFY:     if ((message >= 8'd97 && message <= 122) ||
 								message == 8'd32)
-								if (addr == 5'd31)	begin
+								if (address == 5'd31)	begin
 									core_found <= 1'b1;
 									state <= IDLE;
 								end else
@@ -61,7 +61,7 @@ module verify_message(  input clk,
 				
 				UPDATE_ADDR :	state <= WAIT_FOR_DATA;
                 
-                default:
+                default: state <= IDLE;
             endcase
     end
 

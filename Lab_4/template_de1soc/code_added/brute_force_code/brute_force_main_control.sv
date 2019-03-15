@@ -1,5 +1,5 @@
                                        // input
-module decode_with_key_main_control(    input clk,
+module brute_force_main_control    (    input clk,
                                         input reset,
                                         input start,
 
