@@ -1,0 +1,279 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template --output-directory=C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS --report-file=bsf:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\DE1_SoC_QSYS.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS.qsys --remove-qsys-generate-warning
+Progress: Loading ydevel00028_lab5_template/DE1_SoC_QSYS.qsys
+Progress: Reading input file
+Progress: Adding audio [audio2fifo 1.0]
+Progress: Parameterizing module audio
+Progress: Adding audio_sel [altera_avalon_pio 14.1]
+Progress: Parameterizing module audio_sel
+Progress: Adding clk_25_in [altera_clock_bridge 14.1]
+Progress: Parameterizing module clk_25_in
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_qsys 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding div_freq [altera_avalon_pio 14.1]
+Progress: Parameterizing module div_freq
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding key [altera_avalon_pio 14.1]
+Progress: Parameterizing module key
+Progress: Adding keyboard_keys [altera_avalon_pio 14.1]
+Progress: Parameterizing module keyboard_keys
+Progress: Adding modulation_selector [altera_avalon_pio 14.1]
+Progress: Parameterizing module modulation_selector
+Progress: Adding mouse_pos [altera_avalon_pio 14.1]
+Progress: Parameterizing module mouse_pos
+Progress: Adding pll [altera_pll 14.1]
+Progress: Parameterizing module pll
+Progress: Adding sdram [altera_avalon_new_sdram_controller 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding signal_selector [altera_avalon_pio 14.1]
+Progress: Parameterizing module signal_selector
+Progress: Adding sysid_qsys [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid_qsys
+Progress: Adding timer [altera_avalon_timer 14.1]
+Progress: Parameterizing module timer
+Progress: Adding vga [vga_interface 1.0]
+Progress: Parameterizing module vga
+Progress: Adding vga_clk_bridge_out [altera_clock_bridge 14.1]
+Progress: Parameterizing module vga_clk_bridge_out
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: DE1_SoC_QSYS.audio.EMPTY: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.audio.FIFO_FULL: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.audio.fifo_used: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: DE1_SoC_QSYS.cpu: Nios II Classic cores are now superseded by improved Gen 2 cores.
+Info: DE1_SoC_QSYS.keyboard_keys: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.mouse_pos: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.pll: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Warning: DE1_SoC_QSYS.pll: Able to implement PLL - Actual settings differ from Requested settings
+Info: DE1_SoC_QSYS.sysid_qsys: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: DE1_SoC_QSYS.sysid_qsys: Time stamp will be automatically updated when this component is generated.
+Warning: DE1_SoC_QSYS.vga.alt_vip_vfr_0: The module properties SIMULATION_MODEL_IN_VERILOG and SIMULATION_MODEL_IN_VHDL can not both be set when using the SIMULATION file property: src_hdl/alt_vipvfr131_vfr.v, src_hdl/alt_vipvfr131_vfr_controller.v, src_hdl/alt_vipvfr131_vfr_control_packet_encoder.v, src_hdl/alt_vipvfr131_prc.v, src_hdl/alt_vipvfr131_prc_core.v, src_hdl/alt_vipvfr131_prc_read_master.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_package.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_bursting_master_fifo.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_master.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_unpack_data.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_slave.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_stream_output.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_pulling_width_adapter.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_general_fifo.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_fifo_usedw_calculator.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_gray_clock_crosser.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_std_logic_vector_delay.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_one_bit_delay.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_logic_fifo.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_ram_fifo.vhd
+Info: DE1_SoC_QSYS.vga.vga_clk: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: DE1_SoC_QSYS.vga.vga_clk: Able to implement PLL with user settings
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template --output-directory=C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\synthesis --file-set=QUARTUS_SYNTH --report-file=html:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\DE1_SoC_QSYS.html --report-file=sopcinfo:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS.sopcinfo --report-file=cmp:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\DE1_SoC_QSYS.cmp --report-file=qip:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\synthesis\DE1_SoC_QSYS.qip --report-file=svd:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\synthesis\DE1_SoC_QSYS.svd --report-file=regmap:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\synthesis\DE1_SoC_QSYS.regmap --report-file=xml:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\DE1_SoC_QSYS.xml --report-file=debuginfo:C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS\synthesis\DE1_SoC_QSYS.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSEMA5F31C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=C:\ubc\cpen311_Jan_2017\ydevel00028_lab5_template\DE1_SoC_QSYS.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading ydevel00028_lab5_template/DE1_SoC_QSYS.qsys
+Progress: Reading input file
+Progress: Adding audio [audio2fifo 1.0]
+Progress: Parameterizing module audio
+Progress: Adding audio_sel [altera_avalon_pio 14.1]
+Progress: Parameterizing module audio_sel
+Progress: Adding clk_25_in [altera_clock_bridge 14.1]
+Progress: Parameterizing module clk_25_in
+Progress: Adding clk_50 [clock_source 14.1]
+Progress: Parameterizing module clk_50
+Progress: Adding cpu [altera_nios2_qsys 14.1]
+Progress: Parameterizing module cpu
+Progress: Adding div_freq [altera_avalon_pio 14.1]
+Progress: Parameterizing module div_freq
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 14.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding key [altera_avalon_pio 14.1]
+Progress: Parameterizing module key
+Progress: Adding keyboard_keys [altera_avalon_pio 14.1]
+Progress: Parameterizing module keyboard_keys
+Progress: Adding modulation_selector [altera_avalon_pio 14.1]
+Progress: Parameterizing module modulation_selector
+Progress: Adding mouse_pos [altera_avalon_pio 14.1]
+Progress: Parameterizing module mouse_pos
+Progress: Adding pll [altera_pll 14.1]
+Progress: Parameterizing module pll
+Progress: Adding sdram [altera_avalon_new_sdram_controller 14.1]
+Progress: Parameterizing module sdram
+Progress: Adding signal_selector [altera_avalon_pio 14.1]
+Progress: Parameterizing module signal_selector
+Progress: Adding sysid_qsys [altera_avalon_sysid_qsys 14.1]
+Progress: Parameterizing module sysid_qsys
+Progress: Adding timer [altera_avalon_timer 14.1]
+Progress: Parameterizing module timer
+Progress: Adding vga [vga_interface 1.0]
+Progress: Parameterizing module vga
+Progress: Adding vga_clk_bridge_out [altera_clock_bridge 14.1]
+Progress: Parameterizing module vga_clk_bridge_out
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: DE1_SoC_QSYS.audio.EMPTY: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.audio.FIFO_FULL: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.audio.fifo_used: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: DE1_SoC_QSYS.cpu: Nios II Classic cores are now superseded by improved Gen 2 cores.
+Info: DE1_SoC_QSYS.keyboard_keys: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.mouse_pos: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: DE1_SoC_QSYS.pll: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Warning: DE1_SoC_QSYS.pll: Able to implement PLL - Actual settings differ from Requested settings
+Info: DE1_SoC_QSYS.sysid_qsys: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: DE1_SoC_QSYS.sysid_qsys: Time stamp will be automatically updated when this component is generated.
+Warning: DE1_SoC_QSYS.vga.alt_vip_vfr_0: The module properties SIMULATION_MODEL_IN_VERILOG and SIMULATION_MODEL_IN_VHDL can not both be set when using the SIMULATION file property: src_hdl/alt_vipvfr131_vfr.v, src_hdl/alt_vipvfr131_vfr_controller.v, src_hdl/alt_vipvfr131_vfr_control_packet_encoder.v, src_hdl/alt_vipvfr131_prc.v, src_hdl/alt_vipvfr131_prc_core.v, src_hdl/alt_vipvfr131_prc_read_master.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_package.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_bursting_master_fifo.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_master.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_unpack_data.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_avalon_mm_slave.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_stream_output.v, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_pulling_width_adapter.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_general_fifo.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_fifo_usedw_calculator.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_gray_clock_crosser.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_std_logic_vector_delay.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_one_bit_delay.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_logic_fifo.vhd, C:/altera_local/14.1/ip/altera/frame_reader/common_hdl/alt_vipvfr131_common_ram_fifo.vhd
+Info: DE1_SoC_QSYS.vga.vga_clk: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Info: DE1_SoC_QSYS.vga.vga_clk: Able to implement PLL with user settings
+Info: DE1_SoC_QSYS: Generating DE1_SoC_QSYS "DE1_SoC_QSYS" for QUARTUS_SYNTH
+Info: Inserting clock-crossing logic between cmd_demux.src2 and cmd_mux_002.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src3 and cmd_mux_003.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src4 and cmd_mux_004.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src5 and cmd_mux_005.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src7 and cmd_mux_007.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src8 and cmd_mux_008.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src9 and cmd_mux_009.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src10 and cmd_mux_010.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src15 and cmd_mux_015.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src16 and cmd_mux_016.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src19 and cmd_mux_019.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src20 and cmd_mux_020.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src21 and cmd_mux_021.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src1 and cmd_mux_010.sink1
+Info: Inserting clock-crossing logic between rsp_demux_002.src0 and rsp_mux.sink2
+Info: Inserting clock-crossing logic between rsp_demux_003.src0 and rsp_mux.sink3
+Info: Inserting clock-crossing logic between rsp_demux_004.src0 and rsp_mux.sink4
+Info: Inserting clock-crossing logic between rsp_demux_005.src0 and rsp_mux.sink5
+Info: Inserting clock-crossing logic between rsp_demux_007.src0 and rsp_mux.sink7
+Info: Inserting clock-crossing logic between rsp_demux_008.src0 and rsp_mux.sink8
+Info: Inserting clock-crossing logic between rsp_demux_009.src0 and rsp_mux.sink9
+Info: Inserting clock-crossing logic between rsp_demux_010.src0 and rsp_mux.sink10
+Info: Inserting clock-crossing logic between rsp_demux_010.src1 and rsp_mux_001.sink1
+Info: Inserting clock-crossing logic between rsp_demux_015.src0 and rsp_mux.sink15
+Info: Inserting clock-crossing logic between rsp_demux_016.src0 and rsp_mux.sink16
+Info: Inserting clock-crossing logic between rsp_demux_019.src0 and rsp_mux.sink19
+Info: Inserting clock-crossing logic between rsp_demux_020.src0 and rsp_mux.sink20
+Info: Inserting clock-crossing logic between rsp_demux_021.src0 and rsp_mux.sink21
+Info: audio: "DE1_SoC_QSYS" instantiated audio2fifo "audio"
+Info: audio_sel: Starting RTL generation for module 'DE1_SoC_QSYS_audio_sel'
+Info: audio_sel:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_audio_sel --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0056_audio_sel_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0056_audio_sel_gen//DE1_SoC_QSYS_audio_sel_component_configuration.pl  --do_build_sim=0  ]
+Info: audio_sel: Done RTL generation for module 'DE1_SoC_QSYS_audio_sel'
+Info: audio_sel: "DE1_SoC_QSYS" instantiated altera_avalon_pio "audio_sel"
+Info: cpu: Starting RTL generation for module 'DE1_SoC_QSYS_cpu'
+Info: cpu:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/eperlcmd.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera_local/14.1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera_local/14.1/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera_local/14.1/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera_local/14.1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=DE1_SoC_QSYS_cpu --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0057_cpu_gen/ --quartus_bindir=C:/altera_local/14.1/quartus/bin64 --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0057_cpu_gen//DE1_SoC_QSYS_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2017.03.09 17:29:11 (*) Starting Nios II generation
+Info: cpu: # 2017.03.09 17:29:11 (*)   Checking for plaintext license.
+Info: cpu: # 2017.03.09 17:29:13 (*)   Plaintext license not found.
+Info: cpu: # 2017.03.09 17:29:13 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2017.03.09 17:29:15 (*)   Encrypted license found.  SOF will not be time-limited.
+Info: cpu: # 2017.03.09 17:29:15 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2017.03.09 17:29:15 (*)   Creating all objects for CPU
+Info: cpu: # 2017.03.09 17:29:15 (*)     Testbench
+Info: cpu: # 2017.03.09 17:29:15 (*)     Instruction decoding
+Info: cpu: # 2017.03.09 17:29:15 (*)       Instruction fields
+Info: cpu: # 2017.03.09 17:29:15 (*)       Instruction decodes
+Info: cpu: # 2017.03.09 17:29:16 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2017.03.09 17:29:16 (*)       Instruction controls
+Info: cpu: # 2017.03.09 17:29:16 (*)     Pipeline frontend
+Info: cpu: # 2017.03.09 17:29:16 (*)     Pipeline backend
+Info: cpu: # 2017.03.09 17:29:19 (*)   Generating RTL from CPU objects
+Info: cpu: # 2017.03.09 17:29:22 (*)   Creating encrypted RTL
+Info: cpu: # 2017.03.09 17:29:23 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'DE1_SoC_QSYS_cpu'
+Info: cpu: "DE1_SoC_QSYS" instantiated altera_nios2_qsys "cpu"
+Info: div_freq: Starting RTL generation for module 'DE1_SoC_QSYS_div_freq'
+Info: div_freq:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_div_freq --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0058_div_freq_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0058_div_freq_gen//DE1_SoC_QSYS_div_freq_component_configuration.pl  --do_build_sim=0  ]
+Info: div_freq: Done RTL generation for module 'DE1_SoC_QSYS_div_freq'
+Info: div_freq: "DE1_SoC_QSYS" instantiated altera_avalon_pio "div_freq"
+Info: jtag_uart: Starting RTL generation for module 'DE1_SoC_QSYS_jtag_uart'
+Info: jtag_uart:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=DE1_SoC_QSYS_jtag_uart --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0059_jtag_uart_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0059_jtag_uart_gen//DE1_SoC_QSYS_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'DE1_SoC_QSYS_jtag_uart'
+Info: jtag_uart: "DE1_SoC_QSYS" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: key: Starting RTL generation for module 'DE1_SoC_QSYS_key'
+Info: key:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_key --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0060_key_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0060_key_gen//DE1_SoC_QSYS_key_component_configuration.pl  --do_build_sim=0  ]
+Info: key: Done RTL generation for module 'DE1_SoC_QSYS_key'
+Info: key: "DE1_SoC_QSYS" instantiated altera_avalon_pio "key"
+Info: keyboard_keys: Starting RTL generation for module 'DE1_SoC_QSYS_keyboard_keys'
+Info: keyboard_keys:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_keyboard_keys --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0061_keyboard_keys_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0061_keyboard_keys_gen//DE1_SoC_QSYS_keyboard_keys_component_configuration.pl  --do_build_sim=0  ]
+Info: keyboard_keys: Done RTL generation for module 'DE1_SoC_QSYS_keyboard_keys'
+Info: keyboard_keys: "DE1_SoC_QSYS" instantiated altera_avalon_pio "keyboard_keys"
+Info: modulation_selector: Starting RTL generation for module 'DE1_SoC_QSYS_modulation_selector'
+Info: modulation_selector:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_modulation_selector --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0062_modulation_selector_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0062_modulation_selector_gen//DE1_SoC_QSYS_modulation_selector_component_configuration.pl  --do_build_sim=0  ]
+Info: modulation_selector: Done RTL generation for module 'DE1_SoC_QSYS_modulation_selector'
+Info: modulation_selector: "DE1_SoC_QSYS" instantiated altera_avalon_pio "modulation_selector"
+Info: mouse_pos: Starting RTL generation for module 'DE1_SoC_QSYS_mouse_pos'
+Info: mouse_pos:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_mouse_pos --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0063_mouse_pos_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0063_mouse_pos_gen//DE1_SoC_QSYS_mouse_pos_component_configuration.pl  --do_build_sim=0  ]
+Info: mouse_pos: Done RTL generation for module 'DE1_SoC_QSYS_mouse_pos'
+Info: mouse_pos: "DE1_SoC_QSYS" instantiated altera_avalon_pio "mouse_pos"
+Info: pll: "DE1_SoC_QSYS" instantiated altera_pll "pll"
+Info: sdram: Starting RTL generation for module 'DE1_SoC_QSYS_sdram'
+Info: sdram:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=DE1_SoC_QSYS_sdram --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0065_sdram_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0065_sdram_gen//DE1_SoC_QSYS_sdram_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram: Done RTL generation for module 'DE1_SoC_QSYS_sdram'
+Info: sdram: "DE1_SoC_QSYS" instantiated altera_avalon_new_sdram_controller "sdram"
+Info: signal_selector: Starting RTL generation for module 'DE1_SoC_QSYS_signal_selector'
+Info: signal_selector:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_signal_selector --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0066_signal_selector_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0066_signal_selector_gen//DE1_SoC_QSYS_signal_selector_component_configuration.pl  --do_build_sim=0  ]
+Info: signal_selector: Done RTL generation for module 'DE1_SoC_QSYS_signal_selector'
+Info: signal_selector: "DE1_SoC_QSYS" instantiated altera_avalon_pio "signal_selector"
+Info: sysid_qsys: "DE1_SoC_QSYS" instantiated altera_avalon_sysid_qsys "sysid_qsys"
+Info: timer: Starting RTL generation for module 'DE1_SoC_QSYS_timer'
+Info: timer:   Generation command is [exec C:/altera_local/14.1/quartus/bin64//perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64//perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=DE1_SoC_QSYS_timer --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0068_timer_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0068_timer_gen//DE1_SoC_QSYS_timer_component_configuration.pl  --do_build_sim=0  ]
+Info: timer: Done RTL generation for module 'DE1_SoC_QSYS_timer'
+Info: timer: "DE1_SoC_QSYS" instantiated altera_avalon_timer "timer"
+Info: vga: "DE1_SoC_QSYS" instantiated vga_interface "vga"
+Info: mm_interconnect_0: "DE1_SoC_QSYS" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "DE1_SoC_QSYS" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_synchronizer: "DE1_SoC_QSYS" instantiated altera_irq_clock_crosser "irq_synchronizer"
+Info: rst_controller: "DE1_SoC_QSYS" instantiated altera_reset_controller "rst_controller"
+Info: DATA_FREGEN: Starting RTL generation for module 'DE1_SoC_QSYS_audio_DATA_FREGEN'
+Info: DATA_FREGEN:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_audio_DATA_FREGEN --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0072_DATA_FREGEN_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0072_DATA_FREGEN_gen//DE1_SoC_QSYS_audio_DATA_FREGEN_component_configuration.pl  --do_build_sim=0  ]
+Info: DATA_FREGEN: Done RTL generation for module 'DE1_SoC_QSYS_audio_DATA_FREGEN'
+Info: DATA_FREGEN: "audio" instantiated altera_avalon_pio "DATA_FREGEN"
+Info: EMPTY: Starting RTL generation for module 'DE1_SoC_QSYS_audio_EMPTY'
+Info: EMPTY:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_audio_EMPTY --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0073_EMPTY_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0073_EMPTY_gen//DE1_SoC_QSYS_audio_EMPTY_component_configuration.pl  --do_build_sim=0  ]
+Info: EMPTY: Done RTL generation for module 'DE1_SoC_QSYS_audio_EMPTY'
+Info: EMPTY: "audio" instantiated altera_avalon_pio "EMPTY"
+Info: OUT_PAUSE: Starting RTL generation for module 'DE1_SoC_QSYS_audio_OUT_PAUSE'
+Info: OUT_PAUSE:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_audio_OUT_PAUSE --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0074_OUT_PAUSE_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0074_OUT_PAUSE_gen//DE1_SoC_QSYS_audio_OUT_PAUSE_component_configuration.pl  --do_build_sim=0  ]
+Info: OUT_PAUSE: Done RTL generation for module 'DE1_SoC_QSYS_audio_OUT_PAUSE'
+Info: OUT_PAUSE: "audio" instantiated altera_avalon_pio "OUT_PAUSE"
+Info: fifo_used: Starting RTL generation for module 'DE1_SoC_QSYS_audio_fifo_used'
+Info: fifo_used:   Generation command is [exec C:/altera_local/14.1/quartus/bin64/perl/bin/perl.exe -I C:/altera_local/14.1/quartus/bin64/perl/lib -I C:/altera_local/14.1/quartus/sopc_builder/bin/europa -I C:/altera_local/14.1/quartus/sopc_builder/bin/perl_lib -I C:/altera_local/14.1/quartus/sopc_builder/bin -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_local/14.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE1_SoC_QSYS_audio_fifo_used --dir=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0075_fifo_used_gen/ --quartus_dir=C:/altera_local/14.1/quartus --verilog --config=C:/Users/user/AppData/Local/Temp/alt7235_6718292965696789521.dir/0075_fifo_used_gen//DE1_SoC_QSYS_audio_fifo_used_component_configuration.pl  --do_build_sim=0  ]
+Info: fifo_used: Done RTL generation for module 'DE1_SoC_QSYS_audio_fifo_used'
+Info: fifo_used: "audio" instantiated altera_avalon_pio "fifo_used"
+Info: alt_vip_itc_0: "vga" instantiated alt_vip_itc "alt_vip_itc_0"
+Info: alt_vip_vfr_0: "vga" instantiated alt_vip_vfr "alt_vip_vfr_0"
+Info: vga_clk: "vga" instantiated altera_pll "vga_clk"
+Info: cpu_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "cpu_data_master_translator"
+Info: jtag_uart_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_avalon_jtag_slave_translator"
+Info: cpu_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "cpu_data_master_agent"
+Info: jtag_uart_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_avalon_jtag_slave_agent"
+Info: jtag_uart_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_avalon_jtag_slave_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: router_009: "mm_interconnect_0" instantiated altera_merlin_router "router_009"
+Info: router_013: "mm_interconnect_0" instantiated altera_merlin_router "router_013"
+Info: cpu_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "cpu_data_master_limiter"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: sdram_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "sdram_s1_burst_adapter"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_006: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_006"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_010: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_010"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_010: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_010"
+Info: rsp_demux_015: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_015"
+Info: rsp_demux_016: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_016"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: sdram_s1_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "sdram_s1_rsp_width_adapter"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: limiter_pipeline: "mm_interconnect_0" instantiated altera_avalon_st_pipeline_stage "limiter_pipeline"
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
+Info: Reusing file C:/ubc/cpen311_Jan_2017/ydevel00028_lab5_template/DE1_SoC_QSYS/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: DE1_SoC_QSYS: Done "DE1_SoC_QSYS" with 56 modules, 121 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
