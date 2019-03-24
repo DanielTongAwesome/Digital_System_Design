@@ -20,16 +20,16 @@ module LFSR(    input logic clk,
     always @(posedge clk) begin
         // reset logic
         if (reset) begin
-            output_random_number <= initial_value;
+            out_random_number <= initial_value;
         end
         // output logic
         else begin
             // output changed to feedback, 4->3, 3->2, 2->1, 1->0
-            output_random_number <= {    feedback, 
-                                        output_random_number[4],
-                                        output_random_number[3],
-                                        output_random_number[2],
-                                        output_random_number[1] } 
+            out_random_number <= {    feedback, 
+                                      out_random_number[4],
+                                      out_random_number[3],
+                                      out_random_number[2],
+                                      out_random_number[1] }; 
         end
     end
 
