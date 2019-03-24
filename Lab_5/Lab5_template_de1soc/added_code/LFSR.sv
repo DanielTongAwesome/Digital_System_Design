@@ -10,11 +10,12 @@
  // parameter to test different initalized value
 parameter initial_value = 5'b0_0001;
 
-module LFSR(    input clk,
-                input reset;
-                output [4:0] out_random_number = initial_value);
+module LFSR(    input logic clk,
+                input  logic reset,
+                output logic[4:0] out_random_number = initial_value);
     
-    reg feedback = out_random_number[0] ^ out_random_number[2];
+    // feedback wire
+    wire feedback = out_random_number[0] ^ out_random_number[2];
 
     always @(posedge clk) begin
         // reset logic
