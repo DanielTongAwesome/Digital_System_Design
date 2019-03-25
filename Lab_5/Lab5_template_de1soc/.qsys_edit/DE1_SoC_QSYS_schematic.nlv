@@ -1,0 +1,70 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst DE1_SoC_QSYS.clk_50 -pg 1 -lvl 1 -y 1010
+preplace inst DE1_SoC_QSYS.vga.nios_clk -pg 1
+preplace inst DE1_SoC_QSYS.audio.EMPTY -pg 1
+preplace inst DE1_SoC_QSYS.div_freq -pg 1 -lvl 4 -y 600
+preplace inst DE1_SoC_QSYS.audio.WRREQ -pg 1
+preplace inst DE1_SoC_QSYS.audio.OUT_STOP -pg 1
+preplace inst DE1_SoC_QSYS.audio.FIFO_FULL -pg 1
+preplace inst DE1_SoC_QSYS -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst DE1_SoC_QSYS.jtag_uart -pg 1 -lvl 4 -y 1410
+preplace inst DE1_SoC_QSYS.audio.fifo_used -pg 1
+preplace inst DE1_SoC_QSYS.audio.WRCLK -pg 1
+preplace inst DE1_SoC_QSYS.audio.OUT_PAUSE -pg 1
+preplace inst DE1_SoC_QSYS.pll -pg 1 -lvl 4 -y 980
+preplace inst DE1_SoC_QSYS.modulation_selector -pg 1 -lvl 4 -y 720
+preplace inst DE1_SoC_QSYS.signal_selector -pg 1 -lvl 4 -y 1070
+preplace inst DE1_SoC_QSYS.sdram -pg 1 -lvl 4 -y 860
+preplace inst DE1_SoC_QSYS.audio.OUT_DATA_AUDIO -pg 1
+preplace inst DE1_SoC_QSYS.audio.DATA_FREGEN -pg 1
+preplace inst DE1_SoC_QSYS.vga.alt_vip_itc_0 -pg 1
+preplace inst DE1_SoC_QSYS.sysid_qsys -pg 1 -lvl 4 -y 1320
+preplace inst DE1_SoC_QSYS.key -pg 1 -lvl 4 -y 1630
+preplace inst DE1_SoC_QSYS.audio.clk_sys -pg 1
+preplace inst DE1_SoC_QSYS.vga.vga_clk -pg 1
+preplace inst DE1_SoC_QSYS.vga.clk_50M -pg 1
+preplace inst DE1_SoC_QSYS.timer -pg 1 -lvl 4 -y 1520
+preplace inst DE1_SoC_QSYS.keyboard_keys -pg 1 -lvl 5 -y 760
+preplace inst DE1_SoC_QSYS.vga.alt_vip_vfr_0 -pg 1
+preplace inst DE1_SoC_QSYS.cpu -pg 1 -lvl 3 -y 960
+preplace inst DE1_SoC_QSYS.clk_25_in -pg 1 -lvl 5 -y 1020
+preplace inst DE1_SoC_QSYS.mouse_pos -pg 1 -lvl 4 -y 1210
+preplace inst DE1_SoC_QSYS.audio_sel -pg 1 -lvl 4 -y 490
+preplace inst DE1_SoC_QSYS.vga_clk_bridge_out -pg 1 -lvl 5 -y 1190
+preplace inst DE1_SoC_QSYS.vga -pg 1 -lvl 2 -y 790
+preplace inst DE1_SoC_QSYS.audio -pg 1 -lvl 4 -y 50
+preplace netloc POINT_TO_POINT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)vga_clk_bridge_out.in_clk,(MASTER)vga.vga_clk) 1 2 3 860 1200 NJ 1200 NJ
+preplace netloc POINT_TO_POINT<net_container>DE1_SoC_QSYS</net_container>(MASTER)vga_clk_bridge_out.out_clk_1,(SLAVE)mouse_pos.clk) 1 3 3 1290 1180 NJ 1180 1810
+preplace netloc FAN_OUT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)clk_25_in.in_clk,(MASTER)pll.outclk2,(SLAVE)keyboard_keys.clk) 1 4 1 1600
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(MASTER)pll.outclk1,(MASTER)DE1_SoC_QSYS.clk_sdram) 1 4 2 NJ 1010 NJ
+preplace netloc FAN_OUT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)vga.alt_vip_vfr_0_interrupt_sender,(MASTER)cpu.d_irq,(SLAVE)timer.irq,(SLAVE)key.irq,(SLAVE)jtag_uart.irq) 1 1 3 410 750 NJ 750 1170
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)vga.alt_vip_itc_0_clocked_video,(SLAVE)DE1_SoC_QSYS.vga_alt_vip_itc_0_clocked_video) 1 0 2 NJ 800 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio2fifo_0_out_data_audio,(SLAVE)audio.out_data_audio) 1 0 4 NJ 240 NJ 240 NJ 240 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.clk,(SLAVE)clk_50.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio2fifo_0_fifo_used,(SLAVE)audio.fifo_used) 1 0 4 NJ 200 NJ 200 NJ 200 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(MASTER)DE1_SoC_QSYS.vga_vga_clk,(MASTER)vga_clk_bridge_out.out_clk) 1 5 1 NJ
+preplace netloc INTERCONNECT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)cpu.jtag_debug_module,(SLAVE)signal_selector.s1,(MASTER)cpu.instruction_master,(SLAVE)audio.out_stop_s1,(MASTER)vga.to_sdram,(SLAVE)sysid_qsys.control_slave,(SLAVE)modulation_selector.s1,(SLAVE)audio.wrreq_s1,(SLAVE)sdram.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)audio.out_pause_s1,(SLAVE)audio.out_data_audio_s1,(SLAVE)vga.to_nios_2_datamaster,(SLAVE)key.s1,(SLAVE)audio.fifo_full_s1,(SLAVE)audio.fifo_used_s1,(SLAVE)audio.wrclk_s1,(SLAVE)audio.data_fregen_s1,(SLAVE)div_freq.s1,(SLAVE)mouse_pos.s1,(SLAVE)audio_sel.s1,(MASTER)cpu.data_master,(SLAVE)timer.s1,(SLAVE)keyboard_keys.s1,(SLAVE)audio.empty_s1) 1 1 4 470 1040 900 910 1190 830 N
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.sdram_wire,(SLAVE)sdram.wire) 1 0 4 NJ 980 NJ 980 NJ 930 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.modulation_selector,(SLAVE)modulation_selector.external_connection) 1 0 4 NJ 730 NJ 730 NJ 730 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio2fifo_0_fifo_full,(SLAVE)audio.fifo_full) 1 0 4 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc INTERCONNECT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)sysid_qsys.reset,(SLAVE)modulation_selector.reset,(SLAVE)vga.nios_clk_reset,(SLAVE)signal_selector.reset,(SLAVE)audio.reset,(SLAVE)div_freq.reset,(MASTER)clk_50.clk_reset,(SLAVE)key.reset,(SLAVE)timer.reset,(SLAVE)cpu.reset_n,(MASTER)cpu.jtag_debug_module_reset,(SLAVE)vga.clk_50m_reset,(SLAVE)keyboard_keys.reset,(SLAVE)mouse_pos.reset,(SLAVE)pll.reset,(SLAVE)audio_sel.reset,(SLAVE)jtag_uart.reset,(SLAVE)sdram.reset) 1 1 4 430 1060 920 1150 1270 850 1620
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)audio.wrclk,(SLAVE)DE1_SoC_QSYS.audio2fifo_0_wrclk) 1 0 4 NJ 380 NJ 380 NJ 380 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)signal_selector.external_connection,(SLAVE)DE1_SoC_QSYS.signal_selector) 1 0 4 NJ 1130 NJ 1130 NJ 1130 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.div_freq,(SLAVE)div_freq.external_connection) 1 0 4 NJ 630 NJ 630 NJ 630 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio_sel,(SLAVE)audio_sel.external_connection) 1 0 4 NJ 520 NJ 520 NJ 520 NJ
+preplace netloc FAN_OUT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)sysid_qsys.clk,(SLAVE)timer.clk,(SLAVE)jtag_uart.clk,(SLAVE)audio_sel.clk,(MASTER)clk_50.clk,(SLAVE)div_freq.clk,(SLAVE)key.clk,(SLAVE)modulation_selector.clk,(SLAVE)signal_selector.clk,(SLAVE)vga.clk_50m,(SLAVE)cpu.clk,(SLAVE)pll.refclk) 1 1 3 410 1020 880 1110 1230
+preplace netloc FAN_OUT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)vga.nios_clk,(SLAVE)sdram.clk,(MASTER)pll.outclk0,(SLAVE)audio.clk) 1 1 4 450 1000 NJ 950 1290 970 1580
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)audio.data_divfrec,(SLAVE)DE1_SoC_QSYS.audio2fifo_0_data_divfrec) 1 0 4 NJ 80 NJ 80 NJ 80 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.keyboard_keys,(SLAVE)keyboard_keys.external_connection) 1 0 5 NJ 710 NJ 710 NJ 710 NJ 710 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(MASTER)DE1_SoC_QSYS.clk_25_out,(MASTER)clk_25_in.out_clk) 1 5 1 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio2fifo_0_empty,(SLAVE)audio.empty) 1 0 4 NJ 120 NJ 120 NJ 120 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)key.external_connection,(SLAVE)DE1_SoC_QSYS.key_external_connection) 1 0 4 NJ 1660 NJ 1660 NJ 1660 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio2fifo_0_out_stop,(SLAVE)audio.out_stop) 1 0 4 NJ 320 NJ 320 NJ 320 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.mouse_pos,(SLAVE)mouse_pos.external_connection) 1 0 4 NJ 1240 NJ 1240 NJ 1240 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.pll_locked,(SLAVE)pll.locked) 1 0 4 NJ 1090 NJ 1090 NJ 1090 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)audio.out_pause,(SLAVE)DE1_SoC_QSYS.audio2fifo_0_out_pause) 1 0 4 NJ 280 NJ 280 NJ 280 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>DE1_SoC_QSYS</net_container>(SLAVE)DE1_SoC_QSYS.audio2fifo_0_wrreq,(SLAVE)audio.wrreq) 1 0 4 NJ 420 NJ 420 NJ 420 NJ
+levelinfo -pg 1 0 200 1940
+levelinfo -hier DE1_SoC_QSYS 210 240 680 950 1420 1660 1830

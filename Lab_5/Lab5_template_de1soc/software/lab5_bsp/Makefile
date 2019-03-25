@@ -98,7 +98,7 @@ ACDS_VERSION := 14.1
 
 # This following BUILD_NUMBER comment indicates the build number of the tool 
 # used to generate this makefile. 
-# BUILD_NUMBER: 190
+# BUILD_NUMBER: 186
 
 SETTINGS_FILE := settings.bsp
 SOPC_FILE := ../../DE1_SoC_QSYS.sopcinfo

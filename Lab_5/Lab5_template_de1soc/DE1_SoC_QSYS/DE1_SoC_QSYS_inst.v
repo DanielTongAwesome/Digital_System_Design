@@ -38,6 +38,9 @@
 		.vga_alt_vip_itc_0_clocked_video_vid_f         (<connected-to-vga_alt_vip_itc_0_clocked_video_vid_f>),         //                                .vid_f
 		.vga_alt_vip_itc_0_clocked_video_vid_h         (<connected-to-vga_alt_vip_itc_0_clocked_video_vid_h>),         //                                .vid_h
 		.vga_alt_vip_itc_0_clocked_video_vid_v         (<connected-to-vga_alt_vip_itc_0_clocked_video_vid_v>),         //                                .vid_v
-		.vga_vga_clk_clk                               (<connected-to-vga_vga_clk_clk>)                                //                     vga_vga_clk.clk
+		.vga_vga_clk_clk                               (<connected-to-vga_vga_clk_clk>),                               //                     vga_vga_clk.clk
+		.lfsr_clk_interrupt_gen_export                 (<connected-to-lfsr_clk_interrupt_gen_export>),                 //          lfsr_clk_interrupt_gen.export
+		.lfsr_val_export                               (<connected-to-lfsr_val_export>),                               //                        lfsr_val.export
+		.dds_increment_export                          (<connected-to-dds_increment_export>)                           //                   dds_increment.export
 	);
 

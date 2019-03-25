@@ -320,7 +320,10 @@ DE1_SoC_QSYS U0(
 	   
        .vga_vga_clk_clk                               (video_clk_40Mhz),                               //                     vga_vga_clk.clk
        .clk_25_out_clk                                (CLK_25MHZ)                                 //                      clk_25_out.clk
-       
+       //.lfsr_clk_interrupt_gen_export                 (Frequency_1hz_wire),                 //          lfsr_clk_interrupt_gen.export
+		 //.lfsr_val_export                               ({27'b0, LFSR_output}),                               //                        lfsr_val.export
+	    //.dds_increment_export                          (dds_increment_export)                           //                   dds_increment.export
+
 	);
 	
  
@@ -342,7 +345,8 @@ Clock_Divider Frequency_1hz(	.clock_in	(CLOCK_50),
 								.reset		(1'b0), 
 								.count_end	(32'd25000000));
 
-
+assign LEDR[0] = Frequency_1hz_wire;
+assign LEDR[1] = LFSR_output[0];
 // LFSR module
 wire [4:0] LFSR_output;
 LFSR	LFSR_inst(	.clk				(Frequency_1hz_wire),
@@ -351,7 +355,20 @@ LFSR	LFSR_inst(	.clk				(Frequency_1hz_wire),
 
 // wave generator
 wire [11:0] sin_out, cos_out, squ_out, saw_out;
-wire [31:0] phase_inc;
+
+// phase inc logic
+/*
+wire [31:0] phase_inc, dds_increment_export;
+always @(*) begin
+	if (signal_selector[1:0] == 2'b01) begin
+		phase_inc = dds_increment_export;
+	end
+	else begin
+		phase_inc = 32'd258;
+	end
+end
+*/
+wire [31:0] phase_inc = 32'd258;
 waveform_gen	waveform_gen_inst(	.clk		(CLOCK_50),		// 50Mhz clock
 									.reset		(1'b1),			// active low
 									.en			(1'b1), 		// active high
@@ -404,13 +421,19 @@ end
 wire [11:0] ask_out, bpsk_out, lfsr_out;
 always @(*) begin
 	case (modulation_selector[1:0])
-	  2'b00 : actual_selected_modulation = ask_out;
-	  2'b01	: actual_selected_modulation = sin_out;
-	  2'b10	: actual_selected_modulation = bpsk_out;
-	  2'b11	: actual_selected_modulation = lfsr_out;
-	  default: 
+	  2'b00  : actual_selected_modulation = ask_out;	// ASK modulation
+	  2'b01	: actual_selected_modulation = sin_out;	// FSK modulation
+	  2'b10	: actual_selected_modulation = bpsk_out;	// BPSK modulation
+	  2'b11	: actual_selected_modulation = lfsr_out;	// LFSR modulation
+	  default: actual_selected_modulation = 12'b0;		// defalut 0
 	endcase
 end
+
+
+
+//.lfsr_clk_interrupt_gen_export                 (<connected-to-lfsr_clk_interrupt_gen_export>),                 //          lfsr_clk_interrupt_gen.export
+//.lfsr_val_export                               (<connected-to-lfsr_val_export>),                               //                        lfsr_val.export
+//.dds_increment_export                          (<connected-to-dds_increment_export>)                           //                   dds_increment.export
 
 
 ////////////////////////////////////////////////////////////////////

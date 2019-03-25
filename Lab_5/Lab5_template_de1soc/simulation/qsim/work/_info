@@ -1,0 +1,94 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/s3q0b/Documents/Digital_System_Design/Lab_5/Lab5_template_de1soc/simulation/qsim
+vLFSR
+Z1 !s110 1553534564
+!i10b 1
+!s100 >5Va7VQaOm?W5^JD_W6J@2
+Ieb[kcBCl[Ol6Lz[I`]QoG1
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1553534561
+8dds_and_nios_lab.vo
+Fdds_and_nios_lab.vo
+L0 32
+Z3 OV;L;10.3c;59
+r1
+!s85 0
+31
+!s108 1553534564.203000
+!s107 dds_and_nios_lab.vo|
+!s90 -work|work|dds_and_nios_lab.vo|
+!i113 1
+Z4 o-work work
+n@l@f@s@r
+vLFSR_vlg_check_tst
+R1
+!i10b 1
+!s100 LTD]F^7k_fm@f`h;kKf?H1
+I@:84HcUKhFa=fkK=JlMQ?2
+R2
+R0
+Z5 w1553534559
+Z6 8LFSR_simulation.vwf.vt
+Z7 FLFSR_simulation.vwf.vt
+L0 60
+R3
+r1
+!s85 0
+31
+Z8 !s108 1553534564.434000
+Z9 !s107 LFSR_simulation.vwf.vt|
+Z10 !s90 -work|work|LFSR_simulation.vwf.vt|
+!i113 1
+R4
+n@l@f@s@r_vlg_check_tst
+vLFSR_vlg_sample_tst
+R1
+!i10b 1
+!s100 cmzJh]?VfAW:7NeRLOI@K3
+Im:o7P:UKfYgd]PRU3ib542
+R2
+R0
+R5
+R6
+R7
+L0 30
+R3
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R4
+n@l@f@s@r_vlg_sample_tst
+vLFSR_vlg_vec_tst
+R1
+!i10b 1
+!s100 I80FdgVmaKPCa0BRTCj9=1
+I2N0i:6fz3HY36BJkaLcDJ3
+R2
+R0
+R5
+R6
+R7
+L0 226
+R3
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R4
+n@l@f@s@r_vlg_vec_tst

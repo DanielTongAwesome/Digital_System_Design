@@ -1,4 +1,4 @@
-// (C) 2001-2015 Altera Corporation. All rights reserved.
+// (C) 2001-2014 Altera Corporation. All rights reserved.
 // Your use of Altera Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
@@ -20,9 +20,9 @@
 // Altera IRQ Mapper
 //
 // Parameters
-//   NUM_RCVRS        : 4
+//   NUM_RCVRS        : 5
 //   SENDER_IRW_WIDTH : 32
-//   IRQ_MAP          : 0:0,1:1,2:2,3:3
+//   IRQ_MAP          : 0:0,1:1,2:2,3:3,4:4
 //
 // -------------------------------------------------------
 
@@ -43,6 +43,7 @@ module DE1_SoC_QSYS_irq_mapper
     input                receiver1_irq,
     input                receiver2_irq,
     input                receiver3_irq,
+    input                receiver4_irq,
 
     // -------------------
     // Command Source (Output)
@@ -58,6 +59,7 @@ module DE1_SoC_QSYS_irq_mapper
         sender_irq[1] = receiver1_irq;
         sender_irq[2] = receiver2_irq;
         sender_irq[3] = receiver3_irq;
+        sender_irq[4] = receiver4_irq;
     end
 
 endmodule

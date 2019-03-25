@@ -39,7 +39,10 @@
 			vga_alt_vip_itc_0_clocked_video_vid_f         : out   std_logic;                                        -- vid_f
 			vga_alt_vip_itc_0_clocked_video_vid_h         : out   std_logic;                                        -- vid_h
 			vga_alt_vip_itc_0_clocked_video_vid_v         : out   std_logic;                                        -- vid_v
-			vga_vga_clk_clk                               : out   std_logic                                         -- clk
+			vga_vga_clk_clk                               : out   std_logic;                                        -- clk
+			lfsr_clk_interrupt_gen_export                 : in    std_logic                     := 'X';             -- export
+			lfsr_val_export                               : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			dds_increment_export                          : out   std_logic_vector(31 downto 0)                     -- export
 		);
 	end component DE1_SoC_QSYS;
 
@@ -84,6 +87,9 @@
 			vga_alt_vip_itc_0_clocked_video_vid_f         => CONNECTED_TO_vga_alt_vip_itc_0_clocked_video_vid_f,         --                                .vid_f
 			vga_alt_vip_itc_0_clocked_video_vid_h         => CONNECTED_TO_vga_alt_vip_itc_0_clocked_video_vid_h,         --                                .vid_h
 			vga_alt_vip_itc_0_clocked_video_vid_v         => CONNECTED_TO_vga_alt_vip_itc_0_clocked_video_vid_v,         --                                .vid_v
-			vga_vga_clk_clk                               => CONNECTED_TO_vga_vga_clk_clk                                --                     vga_vga_clk.clk
+			vga_vga_clk_clk                               => CONNECTED_TO_vga_vga_clk_clk,                               --                     vga_vga_clk.clk
+			lfsr_clk_interrupt_gen_export                 => CONNECTED_TO_lfsr_clk_interrupt_gen_export,                 --          lfsr_clk_interrupt_gen.export
+			lfsr_val_export                               => CONNECTED_TO_lfsr_val_export,                               --                        lfsr_val.export
+			dds_increment_export                          => CONNECTED_TO_dds_increment_export                           --                   dds_increment.export
 		);
 

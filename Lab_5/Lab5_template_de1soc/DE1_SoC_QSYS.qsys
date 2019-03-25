@@ -37,7 +37,7 @@
    {
       datum baseAddress
       {
-         value = "134222256";
+         value = "134222272";
          type = "String";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum baseAddress
       {
-         value = "134222240";
+         value = "134222256";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "134222224";
+         value = "134222240";
          type = "String";
       }
    }
@@ -61,7 +61,7 @@
    {
       datum baseAddress
       {
-         value = "134222208";
+         value = "134222224";
          type = "String";
       }
    }
@@ -69,7 +69,7 @@
    {
       datum baseAddress
       {
-         value = "134222192";
+         value = "134222208";
          type = "String";
       }
    }
@@ -77,7 +77,7 @@
    {
       datum baseAddress
       {
-         value = "134222176";
+         value = "134222192";
          type = "String";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum baseAddress
       {
-         value = "134222160";
+         value = "134222176";
          type = "String";
       }
    }
@@ -93,7 +93,7 @@
    {
       datum baseAddress
       {
-         value = "134222032";
+         value = "134222048";
          type = "String";
       }
    }
@@ -101,7 +101,7 @@
    {
       datum baseAddress
       {
-         value = "134222016";
+         value = "134222032";
          type = "String";
       }
    }
@@ -117,7 +117,7 @@
    {
       datum baseAddress
       {
-         value = "134222048";
+         value = "134222064";
          type = "String";
       }
    }
@@ -153,6 +153,22 @@
          type = "String";
       }
    }
+   element dds_increment
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+   }
+   element dds_increment.s1
+   {
+      datum baseAddress
+      {
+         value = "134221984";
+         type = "String";
+      }
+   }
    element div_freq
    {
       datum _sortIndex
@@ -165,7 +181,7 @@
    {
       datum baseAddress
       {
-         value = "134222064";
+         value = "134222080";
          type = "String";
       }
    }
@@ -181,7 +197,7 @@
    {
       datum baseAddress
       {
-         value = "134222280";
+         value = "134222296";
          type = "String";
       }
    }
@@ -197,7 +213,7 @@
    {
       datum baseAddress
       {
-         value = "134222144";
+         value = "134222160";
          type = "String";
       }
    }
@@ -213,7 +229,39 @@
    {
       datum baseAddress
       {
-         value = "134222096";
+         value = "134222112";
+         type = "String";
+      }
+   }
+   element lfsr_clk_interrupt_gen
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
+   element lfsr_clk_interrupt_gen.s1
+   {
+      datum baseAddress
+      {
+         value = "134222016";
+         type = "String";
+      }
+   }
+   element lfsr_val
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+   }
+   element lfsr_val.s1
+   {
+      datum baseAddress
+      {
+         value = "134222000";
          type = "String";
       }
    }
@@ -229,7 +277,7 @@
    {
       datum baseAddress
       {
-         value = "134222112";
+         value = "134222128";
          type = "String";
       }
    }
@@ -245,7 +293,7 @@
    {
       datum baseAddress
       {
-         value = "134222080";
+         value = "134222096";
          type = "String";
       }
    }
@@ -290,7 +338,7 @@
    {
       datum baseAddress
       {
-         value = "134222128";
+         value = "134222144";
          type = "String";
       }
    }
@@ -306,7 +354,7 @@
    {
       datum baseAddress
       {
-         value = "134222272";
+         value = "134222288";
          type = "String";
       }
    }
@@ -428,6 +476,11 @@
    dir="start" />
  <interface name="clk_sdram" internal="pll.outclk1" type="clock" dir="start" />
  <interface
+   name="dds_increment"
+   internal="dds_increment.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="div_freq"
    internal="div_freq.external_connection"
    type="conduit"
@@ -440,6 +493,16 @@
  <interface
    name="keyboard_keys"
    internal="keyboard_keys.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="lfsr_clk_interrupt_gen"
+   internal="lfsr_clk_interrupt_gen.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="lfsr_val"
+   internal="lfsr_val.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -520,7 +583,7 @@
   <parameter name="cpuReset" value="false" />
   <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
   <parameter name="dataAddrWidth" value="28" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' /><slave name='cpu.jtag_debug_module' start='0x8000800' end='0x8001000' /><slave name='vga_alt_vip_vfr_0.avalon_slave' start='0x8001000' end='0x8001080' /><slave name='timer.s1' start='0x8001080' end='0x80010A0' /><slave name='audio_WRREQ.s1' start='0x80010C0' end='0x80010D0' /><slave name='audio_WRCLK.s1' start='0x80010D0' end='0x80010E0' /><slave name='audio_sel.s1' start='0x80010E0' end='0x80010F0' /><slave name='div_freq.s1' start='0x80010F0' end='0x8001100' /><slave name='mouse_pos.s1' start='0x8001100' end='0x8001110' /><slave name='keyboard_keys.s1' start='0x8001110' end='0x8001120' /><slave name='modulation_selector.s1' start='0x8001120' end='0x8001130' /><slave name='signal_selector.s1' start='0x8001130' end='0x8001140' /><slave name='key.s1' start='0x8001140' end='0x8001150' /><slave name='audio_OUT_STOP.s1' start='0x8001150' end='0x8001160' /><slave name='audio_OUT_PAUSE.s1' start='0x8001160' end='0x8001170' /><slave name='audio_OUT_DATA_AUDIO.s1' start='0x8001170' end='0x8001180' /><slave name='audio_fifo_used.s1' start='0x8001180' end='0x8001190' /><slave name='audio_FIFO_FULL.s1' start='0x8001190' end='0x80011A0' /><slave name='audio_EMPTY.s1' start='0x80011A0' end='0x80011B0' /><slave name='audio_DATA_FREGEN.s1' start='0x80011B0' end='0x80011C0' /><slave name='sysid_qsys.control_slave' start='0x80011C0' end='0x80011C8' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80011C8' end='0x80011D0' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' /><slave name='cpu.jtag_debug_module' start='0x8000800' end='0x8001000' /><slave name='vga_alt_vip_vfr_0.avalon_slave' start='0x8001000' end='0x8001080' /><slave name='timer.s1' start='0x8001080' end='0x80010A0' /><slave name='dds_increment.s1' start='0x80010A0' end='0x80010B0' /><slave name='lfsr_val.s1' start='0x80010B0' end='0x80010C0' /><slave name='lfsr_clk_interrupt_gen.s1' start='0x80010C0' end='0x80010D0' /><slave name='audio_WRREQ.s1' start='0x80010D0' end='0x80010E0' /><slave name='audio_WRCLK.s1' start='0x80010E0' end='0x80010F0' /><slave name='audio_sel.s1' start='0x80010F0' end='0x8001100' /><slave name='div_freq.s1' start='0x8001100' end='0x8001110' /><slave name='mouse_pos.s1' start='0x8001110' end='0x8001120' /><slave name='keyboard_keys.s1' start='0x8001120' end='0x8001130' /><slave name='modulation_selector.s1' start='0x8001130' end='0x8001140' /><slave name='signal_selector.s1' start='0x8001140' end='0x8001150' /><slave name='key.s1' start='0x8001150' end='0x8001160' /><slave name='audio_OUT_STOP.s1' start='0x8001160' end='0x8001170' /><slave name='audio_OUT_PAUSE.s1' start='0x8001170' end='0x8001180' /><slave name='audio_OUT_DATA_AUDIO.s1' start='0x8001180' end='0x8001190' /><slave name='audio_fifo_used.s1' start='0x8001190' end='0x80011A0' /><slave name='audio_FIFO_FULL.s1' start='0x80011A0' end='0x80011B0' /><slave name='audio_EMPTY.s1' start='0x80011B0' end='0x80011C0' /><slave name='audio_DATA_FREGEN.s1' start='0x80011C0' end='0x80011D0' /><slave name='sysid_qsys.control_slave' start='0x80011D0' end='0x80011D8' /><slave name='jtag_uart.avalon_jtag_slave' start='0x80011D8' end='0x80011E0' /></address-map>]]></parameter>
   <parameter name="dcache_bursts" value="false" />
   <parameter name="dcache_lineSize" value="32" />
   <parameter name="dcache_numTCDM" value="0" />
@@ -548,7 +611,7 @@
   <parameter name="impl" value="Fast" />
   <parameter name="instAddrWidth" value="28" />
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' /><slave name='cpu.jtag_debug_module' start='0x8000800' end='0x8001000' /></address-map>]]></parameter>
-  <parameter name="internalIrqMaskSystemInfo" value="15" />
+  <parameter name="internalIrqMaskSystemInfo" value="31" />
   <parameter name="manuallyAssignCpuID" value="true" />
   <parameter name="mmu_TLBMissExcOffset" value="0" />
   <parameter name="mmu_TLBMissExcSlave" value="None" />
@@ -637,6 +700,24 @@
   <parameter name="tightlyCoupledInstructionMaster3MapParam" value="" />
   <parameter name="userDefinedSettings" value="" />
  </module>
+ <module
+   name="dds_increment"
+   kind="altera_avalon_pio"
+   version="14.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
  <module name="div_freq" kind="altera_avalon_pio" version="14.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -693,6 +774,38 @@
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
   <parameter name="clockRate" value="25000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="lfsr_clk_interrupt_gen"
+   kind="altera_avalon_pio"
+   version="14.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module name="lfsr_val" kind="altera_avalon_pio" version="14.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
   <parameter name="direction" value="Input" />
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
@@ -1033,7 +1146,7 @@
    start="cpu.data_master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080011c8" />
+  <parameter name="baseAddress" value="0x080011d8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1042,7 +1155,7 @@
    start="cpu.data_master"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080011c0" />
+  <parameter name="baseAddress" value="0x080011d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1051,7 +1164,7 @@
    start="cpu.data_master"
    end="audio.data_fregen_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080011b0" />
+  <parameter name="baseAddress" value="0x080011c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1060,7 +1173,7 @@
    start="cpu.data_master"
    end="audio.empty_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080011a0" />
+  <parameter name="baseAddress" value="0x080011b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1069,7 +1182,7 @@
    start="cpu.data_master"
    end="audio.fifo_full_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001190" />
+  <parameter name="baseAddress" value="0x080011a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1078,7 +1191,7 @@
    start="cpu.data_master"
    end="audio.fifo_used_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001180" />
+  <parameter name="baseAddress" value="0x08001190" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1096,7 +1209,7 @@
    start="cpu.data_master"
    end="audio.out_data_audio_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001170" />
+  <parameter name="baseAddress" value="0x08001180" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1105,7 +1218,7 @@
    start="cpu.data_master"
    end="audio.out_pause_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001160" />
+  <parameter name="baseAddress" value="0x08001170" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1114,7 +1227,7 @@
    start="cpu.data_master"
    end="audio.out_stop_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001150" />
+  <parameter name="baseAddress" value="0x08001160" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="14.1" start="cpu.data_master" end="sdram.s1">
@@ -1129,7 +1242,7 @@
  </connection>
  <connection kind="avalon" version="14.1" start="cpu.data_master" end="key.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001140" />
+  <parameter name="baseAddress" value="0x08001150" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1138,7 +1251,7 @@
    start="cpu.data_master"
    end="signal_selector.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001130" />
+  <parameter name="baseAddress" value="0x08001140" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1147,7 +1260,7 @@
    start="cpu.data_master"
    end="modulation_selector.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001120" />
+  <parameter name="baseAddress" value="0x08001130" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1156,7 +1269,7 @@
    start="cpu.data_master"
    end="keyboard_keys.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001110" />
+  <parameter name="baseAddress" value="0x08001120" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1165,7 +1278,7 @@
    start="cpu.data_master"
    end="mouse_pos.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001100" />
+  <parameter name="baseAddress" value="0x08001110" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1174,7 +1287,7 @@
    start="cpu.data_master"
    end="div_freq.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010f0" />
+  <parameter name="baseAddress" value="0x08001100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1183,7 +1296,34 @@
    start="cpu.data_master"
    end="audio_sel.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010e0" />
+  <parameter name="baseAddress" value="0x080010f0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="cpu.data_master"
+   end="lfsr_clk_interrupt_gen.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x080010c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="cpu.data_master"
+   end="lfsr_val.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x080010b0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="cpu.data_master"
+   end="dds_increment.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x080010a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1201,7 +1341,7 @@
    start="cpu.data_master"
    end="audio.wrclk_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010d0" />
+  <parameter name="baseAddress" value="0x080010e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1210,7 +1350,7 @@
    start="cpu.data_master"
    end="audio.wrreq_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x080010c0" />
+  <parameter name="baseAddress" value="0x080010d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1253,6 +1393,17 @@
  <connection kind="clock" version="14.1" start="clk_50.clk" end="audio_sel.clk" />
  <connection kind="clock" version="14.1" start="clk_50.clk" end="cpu.clk" />
  <connection kind="clock" version="14.1" start="clk_50.clk" end="key.clk" />
+ <connection
+   kind="clock"
+   version="14.1"
+   start="clk_50.clk"
+   end="lfsr_clk_interrupt_gen.clk" />
+ <connection kind="clock" version="14.1" start="clk_50.clk" end="lfsr_val.clk" />
+ <connection
+   kind="clock"
+   version="14.1"
+   start="clk_50.clk"
+   end="dds_increment.clk" />
  <connection kind="clock" version="14.1" start="clk_50.clk" end="vga.clk_50m" />
  <connection kind="clock" version="14.1" start="clk_50.clk" end="pll.refclk" />
  <connection
@@ -1293,6 +1444,13 @@
  </connection>
  <connection kind="interrupt" version="14.1" start="cpu.d_irq" end="key.irq">
   <parameter name="irqNumber" value="3" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="14.1"
+   start="cpu.d_irq"
+   end="lfsr_clk_interrupt_gen.irq">
+  <parameter name="irqNumber" value="4" />
  </connection>
  <connection
    kind="reset"
@@ -1361,6 +1519,21 @@
    version="14.1"
    start="clk_50.clk_reset"
    end="audio_sel.reset" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_50.clk_reset"
+   end="lfsr_clk_interrupt_gen.reset" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_50.clk_reset"
+   end="lfsr_val.reset" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_50.clk_reset"
+   end="dds_increment.reset" />
  <connection
    kind="reset"
    version="14.1"

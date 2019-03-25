@@ -8,28 +8,26 @@
  */
 
  // parameter to test different initalized value
-parameter initial_value = 5'b0_0001;
 
-module LFSR(    input logic clk,
-                input  logic reset,
-                output logic[4:0] out_random_number = initial_value);
-    
-    // feedback wire
-    wire feedback = out_random_number[0] ^ out_random_number[2];
+module LFSR(    clk,
+                reset,
+                out_random_number);
+    input clk, reset;
+	 output reg [4:0] out_random_number = 5'b0_0001;
+  
+  // feedback wire
+    wire feedback;
+	 assign feedback = out_random_number[0] ^ out_random_number[2];
 
     always @(posedge clk) begin
         // reset logic
         if (reset) begin
-            out_random_number <= initial_value;
+            out_random_number <= 5'b0_0001;
         end
         // output logic
         else begin
             // output changed to feedback, 4->3, 3->2, 2->1, 1->0
-            out_random_number <= {    feedback, 
-                                      out_random_number[4],
-                                      out_random_number[3],
-                                      out_random_number[2],
-                                      out_random_number[1] }; 
+            out_random_number <= {    feedback, out_random_number[4:1]}; 
         end
     end
 

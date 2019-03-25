@@ -1,4 +1,4 @@
-// (C) 2001-2015 Altera Corporation. All rights reserved.
+// (C) 2001-2014 Altera Corporation. All rights reserved.
 // Your use of Altera Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
@@ -32,7 +32,7 @@
 //   PIPELINE_ARB:        1
 //   PKT_TRANS_LOCK:      72 (arbitration locking enabled)
 //   ST_DATA_W:           117
-//   ST_CHANNEL_W:        22
+//   ST_CHANNEL_W:        25
 // ------------------------------------------
 
 module DE1_SoC_QSYS_mm_interconnect_0_cmd_mux_006
@@ -42,14 +42,14 @@ module DE1_SoC_QSYS_mm_interconnect_0_cmd_mux_006
     // ----------------------
     input                       sink0_valid,
     input [117-1   : 0]  sink0_data,
-    input [22-1: 0]  sink0_channel,
+    input [25-1: 0]  sink0_channel,
     input                       sink0_startofpacket,
     input                       sink0_endofpacket,
     output                      sink0_ready,
 
     input                       sink1_valid,
     input [117-1   : 0]  sink1_data,
-    input [22-1: 0]  sink1_channel,
+    input [25-1: 0]  sink1_channel,
     input                       sink1_startofpacket,
     input                       sink1_endofpacket,
     output                      sink1_ready,
@@ -60,7 +60,7 @@ module DE1_SoC_QSYS_mm_interconnect_0_cmd_mux_006
     // ----------------------
     output                      src_valid,
     output [117-1    : 0] src_data,
-    output [22-1 : 0] src_channel,
+    output [25-1 : 0] src_channel,
     output                      src_startofpacket,
     output                      src_endofpacket,
     input                       src_ready,
@@ -71,12 +71,12 @@ module DE1_SoC_QSYS_mm_interconnect_0_cmd_mux_006
     input clk,
     input reset
 );
-    localparam PAYLOAD_W        = 117 + 22 + 2;
+    localparam PAYLOAD_W        = 117 + 25 + 2;
     localparam NUM_INPUTS       = 2;
     localparam SHARE_COUNTER_W  = 1;
     localparam PIPELINE_ARB     = 1;
     localparam ST_DATA_W        = 117;
-    localparam ST_CHANNEL_W     = 22;
+    localparam ST_CHANNEL_W     = 25;
     localparam PKT_TRANS_LOCK   = 72;
 
     // ------------------------------------------

@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>ucosii</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 9, 2017 5:36:40 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1489109800798</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>.</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>25-Mar-2019 11:37:22 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1553539042590</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\s3q0b\Documents\Digital_System_Design\Lab_5\Lab5_template_de1soc\software\lab5_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
-        <SopcDesignFile>../../DE1_SoC_QSYS.sopcinfo</SopcDesignFile>
+        <SopcDesignFile>..\..\DE1_SoC_QSYS.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
@@ -1745,110 +1745,128 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_WRREQ</slaveDescriptor>
+                <slaveDescriptor>dds_increment</slaveDescriptor>
+                <addressRange>0x080010A0 - 0x080010AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>lfsr_val</slaveDescriptor>
+                <addressRange>0x080010B0 - 0x080010BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>lfsr_clk_interrupt_gen</slaveDescriptor>
                 <addressRange>0x080010C0 - 0x080010CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_WRCLK</slaveDescriptor>
+                <slaveDescriptor>audio_WRREQ</slaveDescriptor>
                 <addressRange>0x080010D0 - 0x080010DF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_sel</slaveDescriptor>
+                <slaveDescriptor>audio_WRCLK</slaveDescriptor>
                 <addressRange>0x080010E0 - 0x080010EF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>div_freq</slaveDescriptor>
+                <slaveDescriptor>audio_sel</slaveDescriptor>
                 <addressRange>0x080010F0 - 0x080010FF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>mouse_pos</slaveDescriptor>
+                <slaveDescriptor>div_freq</slaveDescriptor>
                 <addressRange>0x08001100 - 0x0800110F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keyboard_keys</slaveDescriptor>
+                <slaveDescriptor>mouse_pos</slaveDescriptor>
                 <addressRange>0x08001110 - 0x0800111F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>modulation_selector</slaveDescriptor>
+                <slaveDescriptor>keyboard_keys</slaveDescriptor>
                 <addressRange>0x08001120 - 0x0800112F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>signal_selector</slaveDescriptor>
+                <slaveDescriptor>modulation_selector</slaveDescriptor>
                 <addressRange>0x08001130 - 0x0800113F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>key</slaveDescriptor>
+                <slaveDescriptor>signal_selector</slaveDescriptor>
                 <addressRange>0x08001140 - 0x0800114F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_OUT_STOP</slaveDescriptor>
+                <slaveDescriptor>key</slaveDescriptor>
                 <addressRange>0x08001150 - 0x0800115F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_OUT_PAUSE</slaveDescriptor>
+                <slaveDescriptor>audio_OUT_STOP</slaveDescriptor>
                 <addressRange>0x08001160 - 0x0800116F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_OUT_DATA_AUDIO</slaveDescriptor>
+                <slaveDescriptor>audio_OUT_PAUSE</slaveDescriptor>
                 <addressRange>0x08001170 - 0x0800117F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_fifo_used</slaveDescriptor>
+                <slaveDescriptor>audio_OUT_DATA_AUDIO</slaveDescriptor>
                 <addressRange>0x08001180 - 0x0800118F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_FIFO_FULL</slaveDescriptor>
+                <slaveDescriptor>audio_fifo_used</slaveDescriptor>
                 <addressRange>0x08001190 - 0x0800119F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_EMPTY</slaveDescriptor>
+                <slaveDescriptor>audio_FIFO_FULL</slaveDescriptor>
                 <addressRange>0x080011A0 - 0x080011AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_DATA_FREGEN</slaveDescriptor>
+                <slaveDescriptor>audio_EMPTY</slaveDescriptor>
                 <addressRange>0x080011B0 - 0x080011BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>audio_DATA_FREGEN</slaveDescriptor>
+                <addressRange>0x080011C0 - 0x080011CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>sysid_qsys</slaveDescriptor>
-                <addressRange>0x080011C0 - 0x080011C7</addressRange>
+                <addressRange>0x080011D0 - 0x080011D7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x080011C8 - 0x080011CF</addressRange>
+                <addressRange>0x080011D8 - 0x080011DF</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

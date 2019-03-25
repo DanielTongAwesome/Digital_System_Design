@@ -1,4 +1,4 @@
-// (C) 2001-2015 Altera Corporation. All rights reserved.
+// (C) 2001-2014 Altera Corporation. All rights reserved.
 // Your use of Altera Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
@@ -50,9 +50,9 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013_default_decode
                DEFAULT_DESTID = 0 
    )
   (output [85 - 81 : 0] default_destination_id,
-   output [22-1 : 0] default_wr_channel,
-   output [22-1 : 0] default_rd_channel,
-   output [22-1 : 0] default_src_channel
+   output [25-1 : 0] default_wr_channel,
+   output [25-1 : 0] default_rd_channel,
+   output [25-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 22'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 25'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 22'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 22'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 25'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 25'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -103,7 +103,7 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013
     // -------------------
     output                          src_valid,
     output reg [99-1    : 0] src_data,
-    output reg [22-1 : 0] src_channel,
+    output reg [25-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -119,7 +119,7 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013
     localparam PKT_PROTECTION_H = 89;
     localparam PKT_PROTECTION_L = 87;
     localparam ST_DATA_W = 99;
-    localparam ST_CHANNEL_W = 22;
+    localparam ST_CHANNEL_W = 25;
     localparam DECODER_TYPE = 1;
 
     localparam PKT_TRANS_WRITE = 52;
@@ -158,7 +158,7 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013
     assign src_valid         = sink_valid;
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
-    wire [22-1 : 0] default_src_channel;
+    wire [25-1 : 0] default_src_channel;
 
 
 
@@ -190,15 +190,15 @@ module DE1_SoC_QSYS_mm_interconnect_0_router_013
 
 
         if (destid == 0 ) begin
-            src_channel = 22'b001;
+            src_channel = 25'b001;
         end
 
         if (destid == 1  && read_transaction) begin
-            src_channel = 22'b010;
+            src_channel = 25'b010;
         end
 
         if (destid == 2  && read_transaction) begin
-            src_channel = 22'b100;
+            src_channel = 25'b100;
         end
 
 
