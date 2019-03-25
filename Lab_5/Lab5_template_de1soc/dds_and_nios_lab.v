@@ -335,6 +335,84 @@ DE1_SoC_QSYS U0(
 (* keep = 1, preserve = 1 *) logic [11:0] actual_selected_signal;
 
 
+// generate 1Hz frequency INPUT 50Mhz OUTPUT 1hz
+wire Frequency_1hz_wire;
+Clock_Divider Frequency_1hz(	.clock_in	(CLOCK_50), 
+								.clock_out	(Frequency_1hz_wire), 
+								.reset		(1'b0), 
+								.count_end	(32'd25000000));
+
+
+// LFSR module
+wire [4:0] LFSR_output;
+LFSR	LFSR_inst(	.clk				(Frequency_1hz_wire),
+                	.reset				(1'b0),
+                	.out_random_number	(LFSR_output));
+
+// wave generator
+wire [11:0] sin_out, cos_out, squ_out, saw_out;
+wire [31:0] phase_inc;
+waveform_gen	waveform_gen_inst(	.clk		(CLOCK_50),		// 50Mhz clock
+									.reset		(1'b1),			// active low
+									.en			(1'b1), 		// active high
+									.phase_inc	(phase_inc),	// phase_inc [31:0]
+									.sin_out	(sin_out),		// sin_out [11:0]
+									.cos_out	(cos_out),		// cos_out [11:0]
+									.squ_out	(squ_out),		// squ_out [11:0]
+									.saw_out	(saw_out)		// saw_out [11:0]
+									);
+
+// ASK output
+always @(*) begin
+	case (LFSR_output[0])
+	  1'b0 : ask_out = 12'b0;
+	  1'b1 : ask_out = sin_out;
+	  default: ask_out = 12'b0;
+	endcase
+end
+
+// BPSK output
+always @(*) begin
+	case (LFSR_output[0])
+	  1'b0 : bpsk_out = ~sin_out;
+	  1'b1 : bpsk_out = sin_out;
+	  default: bpsk_out = 12'b0;
+	endcase
+end
+
+// LFSR output
+always @(*) begin
+	case (LFSR_output[0])
+	  1'b0 : lfsr_out = 12'b1000_0000_0000;
+	  1'b1 : lfsr_out = 12'b0;
+	  default: lfsr_out = 12'b0;
+	endcase
+end
+
+// Select carrier signal 
+always @(*) begin
+	case (signal_selector[1:0])
+	  2'b00 : actual_selected_signal = sin_out;	// sin carrier
+	  2'b01 : actual_selected_signal = cos_out;	// cos carrier
+	  2'b10 : actual_selected_signal = saw_out; // saw carrier
+	  2'b11 : actual_selected_signal = squ_out;	// squ carrier
+	  default: actual_selected_signal = 12'b0;	// default 0
+	endcase
+end
+
+// Select modulation signal
+wire [11:0] ask_out, bpsk_out, lfsr_out;
+always @(*) begin
+	case (modulation_selector[1:0])
+	  2'b00 : actual_selected_modulation = ask_out;
+	  2'b01	: actual_selected_modulation = sin_out;
+	  2'b10	: actual_selected_modulation = bpsk_out;
+	  2'b11	: actual_selected_modulation = lfsr_out;
+	  default: 
+	endcase
+end
+
+
 ////////////////////////////////////////////////////////////////////
 // 
 //                       End of Student Code Section
