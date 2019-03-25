@@ -360,7 +360,7 @@ wire [11:0] sin_out, cos_out, squ_out, saw_out;
 
 wire [31:0] phase_inc, dds_increment_export;
 always @(*) begin
-	if (signal_selector[1:0] == 2'b01) begin
+	if (modulation_selector[1:0] == 2'b01) begin
 		phase_inc = dds_increment_export;
 	end
 	else begin
