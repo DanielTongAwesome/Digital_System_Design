@@ -319,10 +319,10 @@ DE1_SoC_QSYS U0(
 	   .audio_sel_export                              (audio_selector),                               //                       audio_sel.export
 	   
        .vga_vga_clk_clk                               (video_clk_40Mhz),                               //                     vga_vga_clk.clk
-       .clk_25_out_clk                                (CLK_25MHZ)                                 //                      clk_25_out.clk
-       //.lfsr_clk_interrupt_gen_export                 (Frequency_1hz_wire),                 //          lfsr_clk_interrupt_gen.export
-		 //.lfsr_val_export                               ({27'b0, LFSR_output}),                               //                        lfsr_val.export
-	    //.dds_increment_export                          (dds_increment_export)                           //                   dds_increment.export
+       .clk_25_out_clk                                (CLK_25MHZ),                                 //                      clk_25_out.clk
+       .lfsr_clk_interrupt_gen_export                 (Frequency_1hz_wire),                 //          lfsr_clk_interrupt_gen.export
+		 .lfsr_val_export                               ({31'b0, LFSR_output[0]}),                               //                        lfsr_val.export
+	    .dds_increment_export                          (dds_increment_export)                           //                   dds_increment.export
 
 	);
 	
@@ -357,7 +357,7 @@ LFSR	LFSR_inst(	.clk				(Frequency_1hz_wire),
 wire [11:0] sin_out, cos_out, squ_out, saw_out;
 
 // phase inc logic
-/*
+
 wire [31:0] phase_inc, dds_increment_export;
 always @(*) begin
 	if (signal_selector[1:0] == 2'b01) begin
@@ -367,8 +367,8 @@ always @(*) begin
 		phase_inc = 32'd258;
 	end
 end
-*/
-wire [31:0] phase_inc = 32'd258;
+
+//wire [31:0] phase_inc = 32'd258;
 waveform_gen	waveform_gen_inst(	.clk		(CLOCK_50),		// 50Mhz clock
 									.reset		(1'b1),			// active low
 									.en			(1'b1), 		// active high
