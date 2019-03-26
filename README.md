@@ -10,8 +10,8 @@ Below is the project checklist:
    [Lab2_README](/Lab_2/README.md)
  - [x] Project 3 -- Simple iPod with Volume Indication (Embedded processors)<br/>
    [Lab3_README](/Lab_3/README.md)
- - [ ] Project 4 -- Codebreaking (Hardware Acceleration/Parallel processing)
- - [ ] Project 5 -- Nios + Qsys + Direct Digital Synthesis + LFSR + Modulations + Clock Domains (+ a little bit of audio and VGA)
+ - [x] Project 4 -- Codebreaking (Hardware Acceleration/Parallel processing)
+ - [x] Project 5 -- Nios + Qsys + Direct Digital Synthesis + LFSR + Modulations + Clock Domains (+ a little bit of audio and VGA)
 
  - [x] Assignment 1 -- Basic
  - [x] Assignment 2 -- FSM
